@@ -56,6 +56,15 @@ def build_context_prompt(context):
     - If unsure or missing details, ask:
     “Would you like me to connect you with customer care?”
 
+    Formatting rules (IMPORTANT):
+    - Always output clean Markdown.
+    - Always put each bullet on a new line.
+    - Never merge multiple bullet points into one paragraph.
+    - Use:
+    • Bullets with "• "
+    • Line breaks between paragraphs
+    - Do NOT remove formatting even if the content is short.
+
 """ 
 
 
