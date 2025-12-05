@@ -1,11 +1,11 @@
-import os
-from dotenv import load_dotenv
+import streamlit as st
 from groq import Groq
 
-load_dotenv()
-
-# Load key safely from .env
-GROQ_KEY = os.getenv("GROQ_API_KEY")
+# Streamlit Cloud loads API keys ONLY through st.secrets
+try:
+    GROQ_KEY = st.secrets["GROQ_API_KEY"]
+except:
+    GROQ_KEY = None
 
 client = None
 if GROQ_KEY:
