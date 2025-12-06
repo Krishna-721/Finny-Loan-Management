@@ -459,6 +459,9 @@ elif st.session_state.step == 3:
 # ======================================================
 # STEP 4 – DECISION
 # ======================================================
+# ======================================================
+# STEP 4 – DECISION
+# ======================================================
 elif st.session_state.step == 4:
     res = st.session_state.underwriting_result
 
@@ -492,7 +495,7 @@ elif st.session_state.step == 4:
             # PDF Preview
             try:
                 st.pdf(pdf_buffer)
-            except Exception:
+            except:
                 st.info("📄 PDF preview not supported in some browsers. Please download instead.")
 
             # ---------- APPROVAL CARD ----------

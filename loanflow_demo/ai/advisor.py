@@ -1,20 +1,33 @@
 import streamlit as st
 from groq import Groq
+from dotenv import load_dotenv
+import os
 
-# Streamlit Cloud loads API keys ONLY through st.secrets
+
+# Load Local .env (for local development)
+env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
+load_dotenv(env_path)
+
+# Load API key (Streamlit secrets first, then .env fallback)
+GROQ_KEY = None
+
+# Streamlit Cloud
 try:
-    GROQ_KEY = st.secrets["GROQ_API_KEY"]
-except Exception:
+    GROQ_KEY = st.secrets.get("GROQ_API_KEY")
+except:
     GROQ_KEY = None
+print("STREAMLIT SECRET LOADED:", GROQ_KEY)
 
-client = None
-if GROQ_KEY:
-    client = Groq(api_key=GROQ_KEY)
+# Local .env
+if not GROQ_KEY:
+    GROQ_KEY = os.getenv("GROQ_API_KEY")
+
+print("Loaded key:", GROQ_KEY)
+
+client = Groq(api_key=GROQ_KEY) if GROQ_KEY else None
 
 
-# -----------------------------------------------------------
 # Build context-aware system prompt
-# -----------------------------------------------------------
 def build_context_prompt(context):
     loan_amt = context.get("loan_amount", 0)
     tenure = context.get("tenure", 0)
@@ -22,56 +35,67 @@ def build_context_prompt(context):
     income = context.get("income", 0)
 
     return f"""
-    You are Mr. Finn — a customer-focused loan advisor for LoanFlow Banking.
+    You are **Mr. Finn — an intelligent loan advisor for LoanFlow Banking.**
 
-Always start with:
-“Hey! Mr. Finn here, your personal loan advisor.”
+    For every user interaction, always start responses with :
+    "Hey! Mr. Finn here, your personal loan advisor"
 
-Your role:
-- Help customers understand eligibility, improve approval chances, and compare loan options.
-- Explain EMI, rate logic, CIBIL impact, documents, and approval tips clearly.
-- Be supportive, positive, and solution-oriented.
+    Your role:
+    - Answer ONLY banking, loans, credit score, EMI, interest, documentation, or underwriting questions.
+    - If asked anything outside banking, politely decline and redirect.
 
-Communication:
-- Warm, simple, human language.
-- Use bullet points whenever helpful.
-- Max ~180 words; no legal advice.
+    Communication rules:
+    - You should talk like a real human financial advisor, using a friendly and professional tone.
+    - Explain clearly and always use bullet points whenever needed.
+    - Stay concise (max ~200 words).
+    - Never give legally binding advice.
 
-Banking rules:
-- Use real Indian norms: FOIR, DTI, CIBIL score bands, basic risk-based pricing.
-- Clearly state that interest rates vary by bank and market conditions.
-- Never create fictional policies or fees.
+    Banking rules to follow:
+    - Use real Indian norms: FOIR, DTI, CIBIL score bands, basic risk-based pricing.
+    - Mention that interest rates vary by bank and market conditions.
+    - Do NOT hallucinate RBI rules, bank policies, or fees.
 
-Context (use if available):
-• Loan Amount: ₹{loan_amt:,}
-• Tenure: {tenure} months
-• Interest Rate: {rate}%
-• Annual Income: ₹{income:,}
+    Context usage:
+    - If loan context is available, use it:
+        • Loan Amount: ₹{loan_amt:,}
+        • Tenure: {tenure} months
+        • Interest Rate: {rate}%
+        • Annual Income: ₹{income:,}
 
-If data missing → give simple Indian examples.
+    - If context is missing, give general Indian examples.
 
-If clarity lacking → ask:
-“Would you like me to connect you with customer care?”
+    Safety rules:
+    - Never fabricate numbers or policies.
+    - If unsure or missing details, ask:
+    “Would you like me to connect you with customer care?”
+
+    Formatting rules (IMPORTANT):
+    - Always output clean "Markdown".
+    - Always put each bullet on a new line.
+    - Never merge multiple bullet points into one paragraph.
+    - Use:
+    • Bullets with "• "
+    • Line breaks between paragraphs
+    - Do NOT remove formatting even if the content is short.
+"""
 
 
-""" 
-
-
-# -----------------------------------------------------------
-# Call Groq LLaMA — primary AI engine
-# -----------------------------------------------------------
+# Call Groq LLaMA
 def call_groq_llama(prompt):
     if client is None:
-        return None  # No API key
+        return None
 
     try:
         response = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
-            messages=[{"role": "system", "content": "You are FINN, Loan Advisor AI."},
-                      {"role": "user", "content": prompt}],
+            messages=[
+                {"role": "system", "content": "You are FINN, Loan Advisor AI."},
+                {"role": "user", "content": prompt}
+            ],
             temperature=0.6,
             max_tokens=350
         )
+
         return response.choices[0].message.content
 
     except Exception as e:
@@ -79,23 +103,17 @@ def call_groq_llama(prompt):
         return None
 
 
-# -----------------------------------------------------------
 # Main function used by app.py
-# -----------------------------------------------------------
 def get_llama_response(user_question, context):
-    prompt = build_context_prompt(context) + f"\n\nUser Question: {user_question}\nAnswer:"
+    prompt = build_context_prompt(context) + f"\n\nUser Question: {user_question}\n\nAnswer:"
 
-    # 1) Try Groq first
     ai_text = call_groq_llama(prompt)
 
     if ai_text:
         return ai_text, "groq-llama"
 
-    # 2) Fallback if Groq unavailable
-    fallback = (
+    return (
         "⚠️ I'm unable to reach the AI engine right now.\n"
-        "Would you like me to connect you with customer care?"
+        "Would you like me to connect you with customer care?",
+        "fallback"
     )
-    return fallback, "fallback"
-
-print("Loaded key:", GROQ_KEY)

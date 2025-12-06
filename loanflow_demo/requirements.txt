@@ -1,6 +1,6 @@
-streamlit 
 python-dotenv
 groq
+streamlit
 requests
 reportlab
 pypdf
