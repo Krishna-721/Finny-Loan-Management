@@ -1,21 +1,14 @@
-# ==============================================================================
-# FILE: app.py (Main Application Entry Point)
-# ==============================================================================
 import streamlit as st
 import random
 import time
-
-# Import from local files (Fixed import paths)
 from ai.advisor import get_llama_response
 from theme.theme import apply_theme
 from logic.interest import calculate_base_interest_rate
 from logic.underwriting import run_underwriting_engine
 from logic.validation import validate_email, validate_phone, validate_financials
 from logic.utils import calculate_emi, sanitize_input, secure_log, render_header, render_stepper, render_applicant_summary
+from logic.sanction_agent import generate_sanction_letter
 
-# ================================
-# STREAMLIT CONFIG
-# ================================
 st.set_page_config(
     page_title="Finny AI | Loan Agent",
     page_icon="🏦",
@@ -23,9 +16,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# ================================
-# APPLY THEME
-# ================================
 apply_theme()
 
 # ================================
@@ -67,9 +57,6 @@ if "application_id" not in st.session_state:
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# ================================
-# RENDER HEADER & PROGRESS
-# ================================
 render_header()
 render_applicant_summary()
 render_stepper()
@@ -474,55 +461,94 @@ elif st.session_state.step == 3:
 # ======================================================
 elif st.session_state.step == 4:
     res = st.session_state.underwriting_result
-    
+
     if res is None:
         st.error("Application state missing. Please restart.")
         if st.button("Restart"):
-             st.session_state.step = 1
-             st.rerun()
+            st.session_state.step = 1
+            st.rerun()
+
     else:
+
+        # If APPROVED
         if res['eligible']:
+
+            # --- Generate Sanction Letter PDF ---
+            pdf_buffer = generate_sanction_letter(
+                st.session_state.app_data,
+                res,
+                st.session_state.application_id
+            )
+
+            st.markdown("### 📄 Sanction Letter Preview")
+            st.download_button(
+                label="📥 Download Sanction Letter (PDF)",
+                data=pdf_buffer,
+                file_name=f"Sanction_Letter_{st.session_state.application_id}.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+
+            # PDF Preview
+            try:
+                st.pdf(pdf_buffer)
+            except Exception:
+                st.info("📄 PDF preview not supported in some browsers. Please download instead.")
+
+            # ---------- APPROVAL CARD ----------
             st.markdown(f"""
-            <div class="fintech-card fade-in" style="background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%); border: 2px solid #10B981; text-align: center; padding: 40px;">
+            <div class="fintech-card fade-in" 
+                style="background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+                       border: 2px solid #10B981; 
+                       text-align: center; padding: 40px;">
                 <div style="font-size: 3rem;">🎉</div>
-                <h1 style="color: #065F46;">Congratulations!</h1>
-                <h3 style="color: #047857;">Loan Approved</h3>
-                <p style="color: #065F46;">App ID: <strong>{st.session_state.application_id}</strong></p>
+                <h1 style="color: #065F46;">Loan Approved</h1>
+                <p style="color: #047857;">
+                    Application ID: <strong>{st.session_state.application_id}</strong>
+                </p>
+                <p style="opacity:0.7; margin-top:10px;">You can now download your sanction letter.</p>
             </div>
             """, unsafe_allow_html=True)
+
             st.balloons()
+
+        # If REJECTED
         else:
             reasons_html = "<br>".join([f"• {r}" for r in res['reasons']])
             st.markdown(f"""
-            <div class="fintech-card fade-in" style="background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%); border: 2px solid #EF4444; text-align: center; padding: 40px;">
+            <div class="fintech-card fade-in" 
+                style="background: linear-gradient(135deg, #FEE2E2, #FECACA);
+                       border: 2px solid #EF4444; text-align: center; padding: 40px;">
                 <div style="font-size: 3rem;">❌</div>
-                <h1 style="color: #991B1B;">Not Approved</h1>
+                <h1 style="color: #991B1B;">Loan Not Approved</h1>
                 <div style="color: #991B1B; margin-top: 20px;">{reasons_html}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
+        # ------- ANALYSIS CARDS -------
         st.markdown("### 📊 Analysis")
-        
         col1, col2, col3, col4 = st.columns(4)
-        
+
         with col1:
-            score_color = "#10B981" if res['score'] >= 750 else ("#F59E0B" if res['score'] >= 650 else "#EF4444")
+            score_color = "#10B981" if res['score'] >= 750 else (
+                          "#F59E0B" if res['score'] >= 650 else "#EF4444")
             st.markdown(f"""
             <div class="metric-box fade-in">
                 <div class="metric-label">Credit Score</div>
                 <div class="metric-value" style="color: {score_color};">{res['score']}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col2:
-            foir_color = "#10B981" if res['foir'] < 40 else ("#F59E0B" if res['foir'] < 50 else "#EF4444")
+            foir_color = "#10B981" if res['foir'] < 40 else (
+                         "#F59E0B" if res['foir'] < 50 else "#EF4444")
             st.markdown(f"""
             <div class="metric-box fade-in">
                 <div class="metric-label">FOIR</div>
                 <div class="metric-value" style="color: {foir_color};">{res['foir']}%</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col3:
             st.markdown(f"""
             <div class="metric-box fade-in">
@@ -530,32 +556,35 @@ elif st.session_state.step == 4:
                 <div class="metric-value" style="color: #667eea;">₹{res['emi']:,}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
         with col4:
-            risk_color = "#10B981" if res['risk'] == "Low" else ("#F59E0B" if res['risk'] == "Medium" else "#EF4444")
+            risk_color = "#10B981" if res['risk'] == "Low" else (
+                         "#F59E0B" if res['risk'] == "Medium" else "#EF4444")
             st.markdown(f"""
             <div class="metric-box fade-in">
                 <div class="metric-label">Risk</div>
                 <div class="metric-value" style="color: {risk_color};">{res['risk']}</div>
             </div>
             """, unsafe_allow_html=True)
-        
+
+        # ------- Recommendations -------
         if res['recommendations']:
             st.markdown("### 💡 Recommendations")
             st.markdown('<div class="fintech-card fade-in">', unsafe_allow_html=True)
             for idx, rec in enumerate(res['recommendations'], 1):
                 st.markdown(f"**{idx}.** {rec}")
             st.markdown('</div>', unsafe_allow_html=True)
-        
+
         st.markdown("---")
+
         if st.button("🔄 New Application", use_container_width=True):
             st.session_state.step = 1
-            st.session_state.app_data = {"name": "", "email": "", "phone": "", "income": 0, "loan_amount": 0, "tenure": 12, "rate": 10.5, "employment": "Salaried", "existing_emis": 0, "credit_score": 0, "purpose": "Personal", "address": ""}
-            st.session_state.co_applicant = {"enabled": False, "name": "", "email": "", "phone": "", "income": 0, "employment": "Salaried", "relationship": "Spouse"}
-            st.session_state.docs_status = {"Identity": False, "Income": False, "Collateral": False, "identity_file": None, "income_file": None, "collateral_file": None}
+            st.session_state.app_data = {k: "" for k in st.session_state.app_data}
+            st.session_state.co_applicant["enabled"] = False
             st.session_state.underwriting_result = None
             st.session_state.application_id = f"LF{random.randint(10000, 99999)}"
             st.rerun()
+
 
 # ======================================================
 # AI ADVISOR
@@ -565,7 +594,7 @@ st.divider()
 tab1, tab2 = st.tabs(["🤖 Advisor", "🔒 Audit Logs"])
 
 with tab1:
-    st.markdown("### Ask Mr. Finn – The Loan Assistant")
+    st.markdown("### Ask Mr. Finn – The Loan Agent")
     st.caption("⚠️ Mr. Finn provides AI-based guidance using demo data | Responses may not reflect actual lender decisions.")
     
     col1, col2 = st.columns([4, 1])

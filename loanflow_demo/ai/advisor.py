@@ -4,7 +4,7 @@ from groq import Groq
 # Streamlit Cloud loads API keys ONLY through st.secrets
 try:
     GROQ_KEY = st.secrets["GROQ_API_KEY"]
-except:
+except Exception:
     GROQ_KEY = None
 
 client = None
@@ -69,7 +69,7 @@ def build_context_prompt(context):
 
 
 # -----------------------------------------------------------
-# Call Groq LLaMA 3.2 — primary AI engine
+# Call Groq LLaMA — primary AI engine
 # -----------------------------------------------------------
 def call_groq_llama(prompt):
     if client is None:
@@ -108,3 +108,5 @@ def get_llama_response(user_question, context):
         "Would you like me to connect you with customer care?"
     )
     return fallback, "fallback"
+
+print("Loaded key:", GROQ_KEY)
