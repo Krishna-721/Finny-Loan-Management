@@ -8,6 +8,8 @@ from logic.underwriting import run_underwriting_engine
 from logic.validation import validate_email, validate_phone, validate_financials
 from logic.utils import calculate_emi, sanitize_input, secure_log, render_header, render_stepper, render_applicant_summary
 from logic.sanction_agent import generate_sanction_letter
+from logic.verification_agent import verify_applicant
+# ================================
 
 st.set_page_config(
     page_title="Finny AI | Loan Agent",
@@ -85,6 +87,8 @@ if st.session_state.step == 1:
             phone = st.text_input("Phone Number *",
                                  value=st.session_state.app_data['phone'] if st.session_state.app_data['phone'] else "",
                                  placeholder="9876543210", max_chars=10)
+            
+            PAN = st.text_input("PAN Number *", placeholder="ABCDE1234F")
         
         with col2:
             emp_type = st.selectbox("Employment Type *",
@@ -264,18 +268,36 @@ if st.session_state.step == 1:
             if co_income <= 0:
                 errors.append("Co-applicant income required")
         
+
+        pan_result = verify_applicant(PAN)
+
+        if pan_result["status"] == "invalid_pan":
+            st.error("❌ Invalid PAN format. Please check again.")
+            st.stop()
+
+        # Store PAN
+        st.session_state.app_data["pan"] = PAN
+
+        # Inject bureau results into app_data
+        st.session_state.app_data["credit_score"] = pan_result["credit_score"]
+        st.session_state.app_data["existing_emis"] = pan_result["existing_emi"]
+
+        secure_log(f"Verified PAN | Score={pan_result['credit_score']} | EMI={pan_result['existing_emi']}")
+
+
         if errors:
             for err in errors:
                 st.error(err)
         else:
+    # Update application data
             st.session_state.app_data.update({
                 "name": sanitize_input(name), "email": sanitize_input(email),
                 "phone": sanitize_input(phone), "employment": emp_type,
                 "purpose": purpose, "address": sanitize_input(address),
                 "income": income, "existing_emis": existing_emis,
-                "loan_amount": amount, "tenure": tenure, "rate": calculated_rate
+                "loan_amount": amount, "tenure": tenure, "rate": calculated_rate, "PAN": PAN
             })
-            
+
             if co_toggle:
                 st.session_state.co_applicant.update({
                     "enabled": True, "name": sanitize_input(co_name),
@@ -283,10 +305,26 @@ if st.session_state.step == 1:
                     "income": co_income, "employment": co_employment,
                     "relationship": co_relationship
                 })
-                secure_log(f"Step 1 completed with co-applicant")
-            else:
-                st.session_state.co_applicant['enabled'] = False
-                secure_log(f"Step 1 completed")
+
+            # ---------------------------------------------
+            # 🔍 RUN VERIFICATION AGENT HERE
+            # ---------------------------------------------
+            # --- RUN PAN VERIFICATION ---
+            
+            pan_result = verify_applicant(PAN)
+
+            if pan_result["status"] == "invalid_pan":
+                st.error("❌ Invalid PAN number format.")
+                st.stop()
+
+            # Store verified values
+            st.session_state.app_data["credit_score"] = pan_result["credit_score"]
+            st.session_state.app_data["existing_emis"] = pan_result["existing_emi"]
+
+            secure_log(
+                f"PAN Verified | Score={pan_result['credit_score']} | "
+                f"Existing EMI={pan_result['existing_emi']}"
+            )
             
             st.session_state.step = 2
             st.success("✓ Details saved!")
