@@ -1,39 +1,22 @@
+# validation.py — FIXED FOR PROTOTYPE
+
 import re
 
-# -----------------------------------------------------------
-# Email validation
-# -----------------------------------------------------------
 def validate_email(email):
-    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-    return re.match(pattern, email) is not None
+    return bool(re.match(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$', email))
 
-
-# -----------------------------------------------------------
-# Indian phone validation
-# -----------------------------------------------------------
 def validate_phone(phone):
-    pattern = r'^[6-9]\d{9}$'
-    return re.match(pattern, str(phone)) is not None
+    return bool(re.match(r'^[6-9]\d{9}$', str(phone)))
 
+def validate_financials(amount, monthly_salary):
+    # Prototype-friendly limits
+    if amount < 50000 or amount > 1_00_00_000:
+        return False, "Loan must be ₹50,000 to ₹1,00,00,000."
 
-# -----------------------------------------------------------
-# Financial validation
-# -----------------------------------------------------------
-def validate_financials(amount, salary):
-    """
-    Backend validation to prevent UI manipulation.
-    - Max 1 crore
-    - Min 50k
-    - Salary must be >= 10k monthly
-    - Loan <= 5× annual income
-    """
-    if amount < 50000 or amount > 10000000:
-        return False, "Loan amount must be between ₹50,000 and ₹1,00,00,000."
+    if monthly_salary < 10000:
+        return False, "Monthly income too low."
 
-    if salary < 10000:
-        return False, "Monthly income is too low for eligibility."
-
-    if amount > (salary * 60):
-        return False, "Loan amount exceeds maximum eligibility (5× annual income)."
+    if amount > (monthly_salary * 60):  # 5× annual income
+        return False, "Loan exceeds 5× your annual income."
 
     return True, "Valid"
