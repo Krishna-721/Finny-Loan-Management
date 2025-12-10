@@ -4,7 +4,7 @@ through conversational interface.
 """
 
 from collections import defaultdict
-from ai.advisor import get_llama_response
+from loanflow_demo.ai.groq_client import get_llama_response
 
 
 class MasterAgent:

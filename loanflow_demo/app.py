@@ -1,450 +1,225 @@
-"""
-loanflow_demo/app_chat.py - NEW CHAT-FIRST VERSION
-
-This is the updated main app that uses conversational interface
-driven by Master Agent.
-
-To use: Replace your current app.py with this, or run separately.
-"""
-
 import streamlit as st
-import random
-import time
-from ai.master_agent import MasterAgent, format_agent_handoff
-from theme.theme import apply_theme
-from logic.verification_agent import verify_applicant
-from logic.underwriting import run_underwriting_engine
-from logic.sanction_agent import generate_sanction_letter
-from logic.utils import secure_log, render_header, calculate_emi
-#from logic.validation import validate_pan
 
-st.set_page_config(
-    page_title="LoanFlow AI | Agentic Loan Assistant",
-    page_icon="🏦",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
+from agents.sales_agent import collect_sales_info
+from agents.verification_agent import verify_pan
+from agents.underwriting_agent import run_underwriting
+from agents.document_agent import verify_salary_slip
+from agents.sanction_agent import create_sanction_letter
 
-apply_theme()
+from theme.theme import load_theme, render_header, render_agent_card, metric_box
 
-# ================================
-# SESSION STATE INITIALIZATION
-# ================================
-if "master_agent" not in st.session_state:
-    st.session_state.master_agent = MasterAgent()
 
-if "chat_messages" not in st.session_state:
-    st.session_state.chat_messages = [
-        {
-            "role": "assistant",
-            "content": "👋 Hi! I'm **Mr. Finn**, your personal loan advisor from LoanFlow AI.\n\nI'm here to help you get a personal loan approved in minutes. Ready to get started?"
-        }
-    ]
+# --------------------------------------------------
+# INITIALIZE THEME & HEADER
+# --------------------------------------------------
+st.set_page_config(page_title="LoanFlow AI", page_icon="🏦", layout="wide")
 
-if "app_data" not in st.session_state:
-    st.session_state.app_data = {
-        "name": "", "pan": "", "phone": "",
-        "income": 0, "loan_amount": 0, "tenure": 12,
-        "rate": 10.5, "employment": "Salaried",
-        "existing_emis": 0, "credit_score": 0,
-        "purpose": "Personal", "pre_approved_limit": 0
-    }
+load_theme()          # <-- APPLY CSS THEME
+render_header()       # <-- SHOW GRADIENT HEADER
 
-if "verification_result" not in st.session_state:
-    st.session_state.verification_result = None
 
-if "underwriting_result" not in st.session_state:
-    st.session_state.underwriting_result = None
+# --------------------------------------------------
+# SESSION INITIALIZATION
+# --------------------------------------------------
+if "flow_step" not in st.session_state:
+    st.session_state.flow_step = 1
 
+for key in ["sales_data", "verification_data", "underwriting_data", "document_data", "sanction_data"]:
+    if key not in st.session_state:
+        st.session_state[key] = None
+
+
+# --------------------------------------------------
+# TOP METRICS (APPLICATION ID, STAGE, PROGRESS)
+# --------------------------------------------------
 if "application_id" not in st.session_state:
-    st.session_state.application_id = f"LF{random.randint(10000, 99999)}"
+    import random
+    st.session_state.application_id = f"LF{random.randint(10000,99999)}"
 
-if "logs" not in st.session_state:
-    st.session_state.logs = []
+colA, colB, colC = st.columns(3)
+with colA:
+    metric_box("Application ID", st.session_state.application_id)
 
-if "waiting_for_action" not in st.session_state:
-    st.session_state.waiting_for_action = None
+with colB:
+    metric_box("Current Stage", f"Step {st.session_state.flow_step}", color="#8b5cf6")
 
+with colC:
+    completed = sum([
+        st.session_state.sales_data is not None,
+        st.session_state.verification_data is not None,
+        st.session_state.underwriting_data is not None,
+        st.session_state.document_data is not None,
+        st.session_state.sanction_data is not None
+    ])
+    metric_box("Progress", f"{completed}/5 Agents", color="#10b981")
 
-# ================================
-# HELPER FUNCTIONS
-# ================================
-
-def extract_pan_from_message(message):
-    """Extract PAN number from user message"""
-    import re
-    # Look for pattern: 5 letters, 4 digits, 1 letter
-    match = re.search(r'\b[A-Z]{5}[0-9]{4}[A-Z]\b', message.upper())
-    return match.group(0) if match else None
-
-
-def extract_amount_from_message(message):
-    """Extract loan amount from user message"""
-    import re
-    # Look for patterns like: 5L, 5 lakh, 500000, 5,00,000
-    
-    # Pattern for "5L" or "5 lakh"
-    match = re.search(r'(\d+\.?\d*)\s*(?:l|lakh|lakhs)', message.lower())
-    if match:
-        return int(float(match.group(1)) * 100000)
-    
-    # Pattern for direct numbers
-    match = re.search(r'₹?\s*(\d[\d,]*)', message)
-    if match:
-        amount_str = match.group(1).replace(',', '')
-        return int(amount_str)
-    
-    return None
+st.divider()
 
 
-def extract_tenure_from_message(message):
-    """Extract tenure from user message"""
-    import re
-    match = re.search(r'(\d+)\s*(?:month|months|yr|year|years)', message.lower())
-    if match:
-        value = int(match.group(1))
-        # If mentioned in years, convert to months
-        if 'yr' in message.lower() or 'year' in message.lower():
-            value *= 12
-        return value
-    return None
+# --------------------------------------------------
+# HELPER — Styled Section Header
+# --------------------------------------------------
+def section_header(title):
+    return f"<h2 style='color:#2D7FF9; font-weight:700; margin-top:15px; margin-bottom:10px;'>{title}</h2>"
 
 
-def extract_purpose_from_message(message):
-    """Extract loan purpose from user message"""
-    message_lower = message.lower()
-    purposes = {
-        "home": ["home", "house", "property", "renovation"],
-        "education": ["education", "study", "college", "course"],
-        "medical": ["medical", "health", "hospital", "treatment"],
-        "business": ["business", "startup", "expansion"],
-        "personal": ["personal", "vacation", "wedding", "emergency"]
-    }
-    
-    for purpose, keywords in purposes.items():
-        if any(kw in message_lower for kw in keywords):
-            return purpose.capitalize()
-    
-    return "Personal"
+# --------------------------------------------------
+# LEFT COLUMN AGENT STATUS
+# --------------------------------------------------
+def render_agent_sidebar():
+    st.markdown("### 🤖 Agent Status")
+
+    render_agent_card("Sales Agent", "🤝", "complete" if st.session_state.sales_data else "idle")
+    render_agent_card("Verification Agent", "🔍", "complete" if st.session_state.verification_data else "idle")
+    render_agent_card("Underwriting Agent", "⚖️", "complete" if st.session_state.underwriting_data else "idle")
+    render_agent_card("Document Agent", "📄", "complete" if st.session_state.document_data else "idle")
+    render_agent_card("Sanction Agent", "📋", "complete" if st.session_state.sanction_data else "idle")
 
 
-# ================================
-# MAIN UI
-# ================================
+# --------------------------------------------------
+# STEP 1 — SALES AGENT
+# --------------------------------------------------
+def step_sales():
+    st.markdown(section_header("Step 1: Loan Details"), unsafe_allow_html=True)
 
-render_header()
+    amount = st.number_input("Loan Amount", min_value=10000)
+    purpose = st.selectbox("Purpose", ["Education", "Business", "Home", "Personal", "Medical"])
+    tenure = st.selectbox("Tenure (months)", [12, 24, 36, 48, 60])
 
-# Application Status Bar
-st.markdown(f"""
-<div style='background: rgba(30, 35, 60, 0.8); padding: 20px; border-radius: 12px; margin-bottom: 25px;'>
-    <div style='display: flex; justify-content: space-between; align-items: center;'>
-        <div>
-            <div style='font-size: 0.8rem; opacity: 0.7;'>Application ID</div>
-            <div style='font-weight: 700; font-size: 1.1rem;'>{st.session_state.application_id}</div>
-        </div>
-        <div>
-            <div style='font-size: 0.8rem; opacity: 0.7;'>Conversation Stage</div>
-            <div style='font-weight: 700; font-size: 1.1rem; color: #8b5cf6;'>{st.session_state.master_agent.stage}</div>
-        </div>
-        <div>
-            <div style='font-size: 0.8rem; opacity: 0.7;'>Status</div>
-            <div style='font-weight: 700; font-size: 1.1rem; color: #10b981;'>Active</div>
-        </div>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+    if st.button("Next → Verification"):
+        st.session_state.sales_data = collect_sales_info(amount, purpose, tenure)
+        st.session_state.flow_step = 2
+        st.rerun()
 
 
-# ================================
-# CHAT INTERFACE
-# ================================
+# --------------------------------------------------
+# STEP 2 — VERIFICATION AGENT
+# --------------------------------------------------
+def step_verification():
+    st.markdown(section_header("Step 2: PAN Verification"), unsafe_allow_html=True)
 
-st.markdown("### 💬 Loan Application Chat")
+    pan = st.text_input("Enter PAN (ABCDE1234F)")
 
-# Chat container
-chat_container = st.container()
+    if st.button("Verify PAN"):
+        details, error = verify_pan(pan)
 
-with chat_container:
-    for idx, msg in enumerate(st.session_state.chat_messages):
-        if msg["role"] == "assistant":
-            with st.chat_message("assistant", avatar="🤖"):
-                st.markdown(msg["content"])
+        if error:
+            st.error(error)
         else:
-            with st.chat_message("user"):
-                st.markdown(msg["content"])
+            st.session_state.verification_data = details
+            st.success("PAN verified successfully!")
+            st.json(details)
+            st.session_state.flow_step = 3
+            st.rerun()
 
-# Chat input
-user_input = st.chat_input("Type your message here...", key="user_input")
 
-if user_input:
-    # Add user message to chat
-    st.session_state.chat_messages.append({
-        "role": "user",
-        "content": user_input
-    })
-    
-    secure_log(f"User input: {user_input[:50]}")
-    
-    # Extract data from message based on stage
-    stage = st.session_state.master_agent.stage
-    
-    if stage == "COLLECT_PAN":
-        pan = extract_pan_from_message(user_input)
-        if pan:
-            st.session_state.app_data["pan"] = pan
-            secure_log(f"PAN extracted: {pan}")
-    
-    elif stage == "VERIFICATION_COMPLETE":
-        amount = extract_amount_from_message(user_input)
-        if amount:
-            st.session_state.app_data["loan_amount"] = amount
-            secure_log(f"Loan amount extracted: ₹{amount:,}")
-    
-    elif stage == "COLLECT_DETAILS":
-        # Extract various details
-        purpose = extract_purpose_from_message(user_input)
-        st.session_state.app_data["purpose"] = purpose
-        
-        tenure = extract_tenure_from_message(user_input)
-        if tenure:
-            st.session_state.app_data["tenure"] = tenure
-        
-        amount = extract_amount_from_message(user_input)
-        if amount and "salary" in user_input.lower() or "income" in user_input.lower():
-            st.session_state.app_data["income"] = amount * 12  # Convert monthly to annual
-    
-    # Build context for master agent
-    context = {
-        **st.session_state.app_data,
-        "decision": st.session_state.underwriting_result.get("scenario_label", "") if st.session_state.underwriting_result else ""
-    }
-    
-    if st.session_state.verification_result:
-        context.update(st.session_state.verification_result)
-    
-    # Get response from Master Agent
-    with st.spinner("🤖 Mr. Finn is thinking..."):
-        ai_response, action, next_stage = st.session_state.master_agent.process_message(
-            user_input, 
-            context
+# --------------------------------------------------
+# STEP 3 — UNDERWRITING AGENT
+# --------------------------------------------------
+def step_underwriting():
+    st.markdown(section_header("Step 3: Underwriting Check"), unsafe_allow_html=True)
+
+    income = st.number_input("Monthly Income", min_value=5000)
+    emp_type = st.selectbox("Employment Type", ["Salaried", "Self-Employed", "Business Owner"])
+
+    if st.button("Run Underwriting"):
+        sales = st.session_state.sales_data
+        verify = st.session_state.verification_data
+
+        result = run_underwriting(
+            loan_amount=sales["loan_amount"],
+            tenure=sales["loan_tenure"],
+            credit_score=verify["credit_score"],
+            existing_emi=verify["existing_emi"],
+            income=income,
+            employment_type=emp_type,
+            loan_purpose=sales["loan_purpose"]
         )
-    
-    # Add AI response
-    st.session_state.chat_messages.append({
-        "role": "assistant",
-        "content": ai_response
-    })
-    
-    # Execute worker agent actions
-    if action == "VERIFY":
-        # Show agent handoff
-        st.session_state.chat_messages.append({
-            "role": "assistant",
-            "content": format_agent_handoff("VERIFY", "calling")
-        })
-        
-        with st.spinner("🔍 Verification Agent working..."):
-            time.sleep(1)  # Simulate processing
-            pan = st.session_state.app_data.get("pan", "")
-            result = verify_applicant(pan)
-            
-            if result["status"] == "verified":
-                st.session_state.verification_result = result
-                st.session_state.app_data["credit_score"] = result["credit_score"]
-                st.session_state.app_data["pre_approved_limit"] = result["pre_approved_limit"]
-                st.session_state.app_data["existing_emis"] = result["existing_emi"]
-                st.session_state.app_data["name"] = result.get("name", "Guest")
-                
-                secure_log(f"Verification complete: Score={result['credit_score']}, Pre-approved=₹{result['pre_approved_limit']:,}")
-                
-                st.session_state.chat_messages.append({
-                    "role": "assistant",
-                    "content": format_agent_handoff("VERIFY", "complete")
-                })
-                
-                # Auto-continue conversation
-                continue_msg = f"""
-Great news, **{result['name']}**! Here's what I found:
 
-✅ **Credit Score:** {result['credit_score']}/900  
-💰 **Pre-Approved Limit:** ₹{result['pre_approved_limit']:,}  
-📊 **Existing EMIs:** ₹{result['existing_emi']:,}/month
+        st.session_state.underwriting_data = result
 
-You have a {"strong" if result['credit_score'] >= 750 else "good"} credit profile! 
-
-**How much would you like to borrow?**  
-💡 *For amounts up to ₹{result['pre_approved_limit']:,}, I can approve instantly!*
-"""
-                st.session_state.chat_messages.append({
-                    "role": "assistant",
-                    "content": continue_msg
-                })
-                
-                st.session_state.master_agent.stage = "VERIFICATION_COMPLETE"
-            else:
-                st.session_state.chat_messages.append({
-                    "role": "assistant",
-                    "content": "⚠️ I couldn't verify that PAN number. Please check and try again."
-                })
-    
-    elif action == "UNDERWRITE":
-        # Show agent handoff
-        st.session_state.chat_messages.append({
-            "role": "assistant",
-            "content": format_agent_handoff("UNDERWRITE", "calling")
-        })
-        
-        with st.spinner("⚖️ Underwriting Agent evaluating..."):
-            result = run_underwriting_engine(
-                st.session_state.app_data,
-                st.session_state.verification_result
-            )
-            
-            st.session_state.underwriting_result = result
-            secure_log(f"Underwriting complete: Scenario={result['scenario']}, Eligible={result['eligible']}")
-            
-            st.session_state.chat_messages.append({
-                "role": "assistant",
-                "content": format_agent_handoff("UNDERWRITE", "complete")
-            })
-            
-            # Format decision message
-            if result['eligible']:
-                decision_msg = f"""
-🎉 **Congratulations!** Your loan is **APPROVED**!
-
-**{result['scenario_icon']} Scenario {result['scenario']}: {result['scenario_label']}**
-
-📋 **Loan Details:**
-- Amount: ₹{st.session_state.app_data['loan_amount']:,}
-- Tenure: {st.session_state.app_data['tenure']} months
-- Interest Rate: {result['final_rate']}%
-- **Monthly EMI: ₹{result['emi']:,}**
-
-📊 **Your Metrics:**
-- Credit Score: {result['score']}
-- FOIR: {result['foir']}%
-- Risk Level: {result['risk']}
-
-Let me generate your sanction letter now...
-"""
-            else:
-                reasons_text = "\n".join([f"• {r}" for r in result['reasons']])
-                decision_msg = f"""
-😔 Unfortunately, your application couldn't be approved at this time.
-
-**{result['scenario_icon']} Scenario {result['scenario']}: {result['scenario_label']}**
-
-**Reasons:**
-{reasons_text}
-
-**Recommendations:**
-"""
-                for rec in result['recommendations']:
-                    decision_msg += f"\n{rec}"
-            
-            st.session_state.chat_messages.append({
-                "role": "assistant",
-                "content": decision_msg
-            })
-            
-            st.session_state.master_agent.stage = "UNDERWRITING_COMPLETE"
-    
-    elif action == "SANCTION":
-        if st.session_state.underwriting_result and st.session_state.underwriting_result['eligible']:
-            st.session_state.chat_messages.append({
-                "role": "assistant",
-                "content": format_agent_handoff("SANCTION", "calling")
-            })
-            
-            with st.spinner("📄 Sanction Agent generating letter..."):
-                time.sleep(1)
-                pdf_buffer = generate_sanction_letter(
-                    st.session_state.app_data,
-                    st.session_state.underwriting_result,
-                    st.session_state.application_id
-                )
-                
-                st.session_state.sanction_pdf = pdf_buffer
-                secure_log("Sanction letter generated")
-                
-                st.session_state.chat_messages.append({
-                    "role": "assistant",
-                    "content": format_agent_handoff("SANCTION", "complete")
-                })
-                
-                st.session_state.chat_messages.append({
-                    "role": "assistant",
-                    "content": """
-✅ **Your sanction letter is ready!**
-
-Please download it below. This letter contains all your loan details and terms & conditions.
-
-**What's next?**
-1. Download and review your sanction letter
-2. Our team will contact you within 24 hours
-3. Keep your documents ready for final verification
-
-Is there anything else I can help you with?
-"""
-                })
-                
-                st.session_state.master_agent.stage = "COMPLETE"
-    
-    st.rerun()
+        if result["decision"] == "APPROVED":
+            st.success("Loan Approved!")
+            st.json(result)
+            st.session_state.flow_step = 4
+            st.rerun()
+        else:
+            st.error("Loan Rejected")
+            st.warning(result["reason"])
 
 
-# ================================
-# SANCTION LETTER DOWNLOAD
-# ================================
+# --------------------------------------------------
+# STEP 4 — DOCUMENT AGENT
+# --------------------------------------------------
+def step_documents():
+    st.markdown(section_header("Step 4: Upload Documents"), unsafe_allow_html=True)
 
-if st.session_state.underwriting_result and st.session_state.underwriting_result.get('eligible'):
-    if hasattr(st.session_state, 'sanction_pdf'):
-        st.divider()
-        st.markdown("### 📄 Your Sanction Letter")
-        
-        col1, col2 = st.columns([3, 1])
-        
-        with col1:
-            st.download_button(
-                label="📥 Download Sanction Letter (PDF)",
-                data=st.session_state.sanction_pdf,
-                file_name=f"Sanction_Letter_{st.session_state.application_id}.pdf",
-                mime="application/pdf",
-                use_container_width=True
-            )
-        
-        with col2:
-            if st.button("🔄 New Application", use_container_width=True):
-                # Reset everything
-                for key in list(st.session_state.keys()):
-                    del st.session_state[key]
-                st.rerun()
+    uploaded = st.file_uploader("Upload Salary Slip (PDF/Image)")
+
+    if st.button("Verify Document"):
+        ok, msg = verify_salary_slip(uploaded)
+
+        if not ok:
+            st.error(msg)
+        else:
+            st.success(msg)
+            st.session_state.document_data = msg
+            st.session_state.flow_step = 5
+            st.rerun()
 
 
-# ================================
-# AUDIT LOGS (Collapsible)
-# ================================
+# --------------------------------------------------
+# STEP 5 — SANCTION AGENT
+# --------------------------------------------------
+def step_sanction():
+    st.markdown(section_header("Step 5: Sanction Letter"), unsafe_allow_html=True)
 
-with st.expander("🔒 View Audit Logs"):
-    if st.session_state.logs:
-        logs_text = "\n".join(st.session_state.logs[-20:])
-        st.code(logs_text, language="log")
-    else:
-        st.info("No logs yet")
+    sales = st.session_state.sales_data
+    uw = st.session_state.underwriting_data
+
+    data = {
+        "Loan Amount": sales["loan_amount"],
+        "Tenure": sales["loan_tenure"],
+        "Interest Rate": uw["interest_rate"],
+        "EMI": uw["emi"],
+        "Decision": uw["decision"]
+    }
+
+    if st.button("Generate Sanction Letter"):
+        filename = create_sanction_letter(data)
+
+        with open(filename, "rb") as f:
+            st.download_button("Download PDF", f, file_name=filename)
+
+        st.success("Sanction Letter Generated!")
+        st.session_state.sanction_data = filename
+        st.session_state.flow_step = 6
+        st.rerun()
 
 
-# ================================
-# FOOTER
-# ================================
-st.markdown("---")
-st.markdown(
-    """
-    <div style='text-align:center; opacity:0.7; padding: 20px 0; font-size: 0.85rem;'>
-        <strong>LoanFlow AI</strong> - Powered by Agentic AI Architecture<br>
-        Master Agent + 4 Worker Agents | Built for EY Techathon 6.0<br>
-        © 2024 All rights reserved
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# --------------------------------------------------
+# STEP 6 — COMPLETE
+# --------------------------------------------------
+def step_complete():
+    st.success("Loan Processing Completed 🎉")
+    st.markdown("Thank you for using LoanFlow AI!")
+
+
+# --------------------------------------------------
+# MAIN LAYOUT: 2 COLUMNS (Agents | Active Step)
+# --------------------------------------------------
+left, right = st.columns([1, 2])
+
+with left:
+    render_agent_sidebar()
+
+with right:
+    step_map = {
+        1: step_sales,
+        2: step_verification,
+        3: step_underwriting,
+        4: step_documents,
+        5: step_sanction,
+        6: step_complete
+    }
+    step_map[st.session_state.flow_step]()
