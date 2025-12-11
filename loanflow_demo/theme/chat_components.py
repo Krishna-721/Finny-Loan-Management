@@ -31,7 +31,7 @@ CHAT_BOX_STYLE = """
     margin-top: 10px;
 }
 .chat-bubble-user {
-    background: #E8F1FF;
+    background: #66748a;
     padding: 8px 12px;
     border-radius: 12px;
     margin-bottom: 6px;
