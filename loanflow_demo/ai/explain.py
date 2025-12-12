@@ -4,8 +4,8 @@ Uses Groq LLM to convert underwriting results & CIBIL data into
 human-friendly explanations.
 """
 
-from loanflow_demo.ai.groq_client import get_llama_response
-from loanflow_demo.ai.persona import EXPLANATION_PERSONA
+from ai.groq_client import get_llama_response
+from ai.persona import EXPLANATION_PERSONA
 
 
 def explain_underwriting(uw_result, app_data):

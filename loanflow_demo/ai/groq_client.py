@@ -1,4 +1,4 @@
-# ai/advisor.py — FIXED FOR PROTOTYPE (SAFE)
+# ai/groq_client.py
 
 import streamlit as st
 from groq import Groq
@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
 load_dotenv(env_path)
 
-# Load key from Streamlit or env
+# Load key from Streamlit secrets or env
 GROQ_KEY = None
 try:
     GROQ_KEY = st.secrets.get("GROQ_API_KEY")
@@ -17,51 +17,34 @@ except Exception:
 
 client = Groq(api_key=GROQ_KEY) if GROQ_KEY else None
 
-
-print("Groq key called:", GROQ_KEY)
-print("-----------------------------------------------------------------------")
-
-# ===========================
-# FALLBACK ANSWERS
-# ===========================
+# Fallback responses if API fails
 FALLBACK_RESPONSES = {
-    "emi": "EMI is the fixed monthly payment. Formula: EMI = [P*r*(1+r)^n] / ((1+r)^n - 1).",
-    "credit" : "Credit score is a 3-digit score from 300-900 that decides your loan eligibility.",
-    "co-applicant": "A co-applicant improves eligibility by adding income and reducing FOIR.",
-    "foir": "FOIR = (All EMIs / Monthly Income) × 100. Target < 50%.",
-    "default": "Hey! Mr. Finn here — ask me anything about your loan, EMI, interest rate or credit score!"
+    "greeting": "Welcome to LoanFlow AI! I'm Mr. Finn, Your Loan Agent. Would you like to apply for a personal loan?",
+    "pan": "To check your eligibility, I'll need your PAN number. Could you share it? (Format: ABCDE1234F)",
+    "default": "I'm here to help with your loan application. What would you like to know?"
 }
 
-def get_llama_response(query, context=None):
+def get_llama_response(prompt, max_tokens=250, temperature=0.4):
+    """
+    Get response from Groq Llama model with fallback
+    """
     if client is None:
-        print("CLIENT IS NONE → using fallback")
-        return FALLBACK_RESPONSES.get(
-            query.lower().strip(), FALLBACK_RESPONSES["default"]
-        )
-
+        print("⚠️ Groq client not initialized - using fallback")
+        return FALLBACK_RESPONSES["default"]
+    
     try:
-        print("\n🔵 SENDING REQUEST TO GROQ...")
-        print("🔵 Query:", query)
-
         resp = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
             messages=[
-                {"role": "system", "content": "You are Mr. Finn, the loan advisor."},
-                {"role": "user", "content": query}
+                {"role": "system", "content": "You are Agent Finn, a professional loan advisor."},
+                {"role": "user", "content": prompt}
             ],
-            max_tokens=200,
-            temperature=0.3
+            max_tokens=max_tokens,
+            temperature=temperature
         )
-
-        print("🟢 RAW RESPONSE:", resp)
-        print("🟢 MESSAGE:", resp.choices[0].message)
-
-        return resp.choices[0].message.content
-
+        
+        return resp.choices[0].message.content.strip()
+    
     except Exception as e:
-        print("🔴 GROQ API ERROR OCCURRED:")
-        print(e)  # PRINT FULL ERROR
-        print("🔴 USING FALLBACK RESPONSE")
-        return FALLBACK_RESPONSES.get(
-            query.lower().strip(), FALLBACK_RESPONSES["default"]
-        )
+        print(f"🔴 Groq API Error: {e}")
+        return FALLBACK_RESPONSES["default"]

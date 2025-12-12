@@ -16,3 +16,7 @@ __pycache__/
 # Ignore logs
 *.log
 logs/
+
+README.md
+
+output/
