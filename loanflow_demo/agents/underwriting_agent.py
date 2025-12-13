@@ -11,20 +11,28 @@ def run_underwriting(
         existing_emi,
         income,
         employment_type,
-        loan_purpose
+        loan_purpose,
+        preapproved_limit=None
     ):
-    """
-    Full underwriting logic based on:
-    - Credit score
-    - FOIR
-    - Employment type
-    - Purpose-based dynamic interest
-    - Loan amount adjustments
-    
-    Returns: dict with decision, reason, interest_rate, emi, foir
+    """    
+    Tier 1  → Instant Approval (loan ≤ pre-approved limit)
+    Tier 2  → Conditional Approval (loan ≤ 2× pre-approved → needs salary slip)
+    Tier 3  → Reject (loan > 2× pre-approved OR credit score < 700)
     """
 
-    # 1. Get interest rate from interest.py logic
+    # ---------------------------
+    # 1️⃣ Credit score validation
+    # ---------------------------
+    if credit_score < 700:
+        return {
+            "decision": "REJECTED",
+            "reason": f"Low credit score ({credit_score} < 700)",
+            "interest_rate": None,
+            "emi": None,
+            "foir": None
+        }
+
+    # Interest rate calculation
     interest_rate = calculate_base_interest_rate(
         tenure_months=tenure,
         employment_type=employment_type,
@@ -33,29 +41,47 @@ def run_underwriting(
         credit_score=credit_score
     )
 
-    # 2. Calculate EMI
+    # EMI calculation
     new_emi = calculate_emi(loan_amount, interest_rate, tenure)
 
-    # 3. Calculate FOIR
+    # FOIR (informative — used in Tier 2 verification)
     foir = calculate_foir(existing_emi, new_emi, income)
 
-    # 4. Decision logic
-    decision = "APPROVED"
-    reason = None
+    # Ensure pre-approved limit is available
+    if preapproved_limit is None:
+        # fallback (should not happen)
+        preapproved_limit = income * 3  
 
-    if credit_score < 650:
-        decision = "REJECTED"
-        reason = f"Low credit score ({credit_score} < 650)"
-    elif foir > 50:
-        decision = "REJECTED"
-        reason = f"High FOIR ({foir:.1f}% > 50%)"
-    elif income < 25000:
-        decision = "REJECTED"
-        reason = f"Insufficient income (₹{income:,} < ₹25,000)"
+    # ---------------------------
+    # 2️⃣ Tier 1 — Instant Approval
+    # ---------------------------
+    if loan_amount <= preapproved_limit:
+        return {
+            "decision": "APPROVED",
+            "reason": "Loan within pre-approved limit",
+            "interest_rate": interest_rate,
+            "emi": new_emi,
+            "foir": round(foir, 2)
+        }
 
+    # ---------------------------
+    # 3️⃣ Tier 2 — Salary Slip Required
+    # ---------------------------
+    if loan_amount <= 2 * preapproved_limit:
+        return {
+            "decision": "NEED_SALARY_SLIP",
+            "reason": "Loan exceeds pre-approved limit but ≤ 2× limit",
+            "interest_rate": interest_rate,
+            "emi": new_emi,
+            "foir": round(foir, 2)
+        }
+
+    # ---------------------------
+    # 4️⃣ Tier 3 — Hard Reject
+    # ---------------------------
     return {
-        "decision": decision,
-        "reason": reason,
+        "decision": "REJECTED",
+        "reason": "Loan exceeds 2× pre-approved limit",
         "interest_rate": interest_rate,
         "emi": new_emi,
         "foir": round(foir, 2)

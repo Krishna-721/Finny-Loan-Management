@@ -22,7 +22,7 @@ class MasterAgent:
             
             "COLLECT_PAN": "Excellent! To check your eligibility and credit profile, I'll need your PAN number:",
             
-            "VERIFICATION_DONE": f"Hi {context.get('name', 'there')}! Great news - your credit score is {context.get('credit_score', 0)}. That's {'excellent' if context.get('credit_score', 0) >= 750 else 'good'}! You're pre-approved for up to ₹{context.get('pre_approved_limit', 0):,}. Let me evaluate your loan now...",
+            "VERIFICATION_DONE": f"Hi {context.get('name', 'there')}! Great news - your credit score is {context.get('credit_score', 0)}. That's {'excellent' if context.get('credit_score', 0) >= 750 else 'good'}! You're pre-approved for up to ₹{context.get('preapproved_limit', 0):,}. Let me evaluate your loan now...",
             
             "UNDERWRITING_APPROVED": f"🎉 Congratulations! Your loan is **APPROVED**!\n\n- Monthly EMI: ₹{context.get('emi', 0):,}\n- Interest Rate: {context.get('interest_rate', 0)}%\n- FOIR: {context.get('foir', 0)}%\n\nNow I need to verify your salary slip. Please upload it below:",
             
