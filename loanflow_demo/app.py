@@ -350,7 +350,7 @@ elif st.session_state.waiting_for == "start_confirmation":
             add_message("agent", sales_msg)
             st.session_state.waiting_for = "loan_purpose"
         else:
-            add_message("agent", "No worries! When you're ready to proceed, just type **'yes'** and we'll get started. 😊")
+            add_message("agent", "No worries! When you're ready to proceed, just type 'yes' and we'll get started. 😊")
         
         st.rerun()
 
@@ -371,7 +371,7 @@ elif st.session_state.waiting_for == "loan_purpose":
             Analyze their need and:
             1. Recommend the BEST loan type from: Personal Loan, Home Loan, Auto Loan, Business Loan, Education Loan
             2. Provide a 1 sentence explanation of why this loan type suits them
-            3. Mention 1-2 key benefits of this loan type
+            3. Mention 1-2 point (short and crisp) key benefits of this loan type
             4. Everything must be in a readable format.
 
             Format your response naturally and conversationally. End with:
@@ -420,8 +420,8 @@ elif st.session_state.waiting_for == "loan_type":
             # Show loan details
             if loan_type in LOAN_TYPES:
                 loan_info = LOAN_TYPES[loan_type]
-                st.info(f"###Interest Rate: {loan_info.get('rate', 'N/A')}% p.a.\n\n"
-                       f"###Max Tenure: {loan_info.get('max_tenure', 'N/A')} months") 
+                st.info(f"Interest Rate: {loan_info.get('rate', 'N/A')}% p.a.\n\n"
+                       f"Max Tenure: {loan_info.get('max_tenure', 'N/A')} months") 
         
         with col2:
             employment = st.selectbox(
@@ -436,7 +436,7 @@ elif st.session_state.waiting_for == "loan_type":
             st.session_state.app_data["loan_type"] = loan_type
             st.session_state.app_data["employment_type"] = employment
             
-            add_message("user", f"I selected **{loan_type}** and I'm **{employment}**")
+            add_message("user", f"I selected {loan_type} and I'm {employment}")
             
             msg = st.session_state.master_agent.get_message("COLLECT_AMOUNT")
             add_message("agent", msg)
@@ -466,9 +466,9 @@ elif st.session_state.waiting_for == "amount":
             tenure = st.slider(
                 "Tenure (months)",
                 min_value=12,
-                max_value=180,
+                max_value=240,
                 value=36,
-                step=6,
+                step=2,
                 help="Loan repayment period"
             )
         
@@ -516,7 +516,7 @@ elif st.session_state.waiting_for == "amount":
 # PAN ENTRY
 elif st.session_state.waiting_for == "pan":
     with render_widget_container():
-        st.markdown("### 🔐 Identity Verification")
+        st.markdown(" 🔐 Identity Verification")
         st.info("📌 Your PAN is required for credit verification and regulatory compliance. All data is encrypted and secure.")
         
         pan = st.text_input(
@@ -545,7 +545,7 @@ elif st.session_state.waiting_for == "pan":
 
 # VERIFICATION AGENT
 elif st.session_state.waiting_for == "verification_processing":
-    time.sleep(2)
+    time.sleep(5)  # Simulate processing time
     pan = st.session_state.app_data["pan"]
     
     try:
@@ -569,11 +569,11 @@ elif st.session_state.waiting_for == "verification_processing":
             
             add_message(
                 "system",
-                f"✅###Verification Successful\n\n"
+                f"✅Verification Successful\n\n"
                 f"Welcome, **{bureau_data['name']}**!\n\n"
                 f"{score_emoji} **CIBIL Score:** {score}\n\n"
-                f"💳 ###Pre-approved Limit: {format_currency(bureau_data['preapproved_limit'])}\n"
-                f"💰 **Existing EMI:** {format_currency(bureau_data['existing_emi'])}/month"
+                f"💳Pre-approved Limit: {format_currency(bureau_data['preapproved_limit'])}\n"
+                f"💰 *Existing EMI:** {format_currency(bureau_data['existing_emi'])}/month"
             )
             
             st.session_state.chat_history.append({
@@ -604,7 +604,7 @@ elif st.session_state.waiting_for == "verification_processing":
 # UNDERWRITING
 elif st.session_state.waiting_for == "underwriting_trigger":
     st.session_state.chat_history.append({"type": "loading", "agent": "Underwriting"})
-    time.sleep(2)
+    time.sleep(5)
     st.session_state.chat_history.pop()
     
     try:
@@ -649,25 +649,25 @@ elif st.session_state.waiting_for == "underwriting_trigger":
         # Handle rejection with AI explanation
         if decision == "REJECTED":
             reject_prompt = f"""
-You are a compassionate loan officer. A customer's loan application was rejected. Explain why in a supportive tone.
+            You are a compassionate loan officer. A customer's loan application was rejected. Explain why in a supportive tone.
 
-Customer Details:
-- Loan Amount Requested: ₹{st.session_state.app_data['loan_amount']:,}
-- Tenure: {st.session_state.app_data['tenure']} months
-- Credit Score: {st.session_state.app_data['credit_score']}
-- Monthly Income: ₹{st.session_state.app_data['monthly_salary']:,}
-- Existing EMI: ₹{st.session_state.app_data['existing_emi']:,}
-- Pre-approved Limit: ₹{st.session_state.app_data['pre_approved_limit']:,}
+            Customer Details:
+            - Loan Amount Requested: ₹{st.session_state.app_data['loan_amount']:,}
+            - Tenure: {st.session_state.app_data['tenure']} months
+            - Credit Score: {st.session_state.app_data['credit_score']}
+            - Monthly Income: ₹{st.session_state.app_data['monthly_salary']:,}
+            - Existing EMI: ₹{st.session_state.app_data['existing_emi']:,}
+            - Pre-approved Limit: ₹{st.session_state.app_data['pre_approved_limit']:,}
 
-Decision: REJECTED
+            Decision: REJECTED
 
-Provide:
-1. A polite, empathetic explanation (2-3 sentences)
-2. Specific reasons (e.g., low credit score, high FOIR, exceeds pre-approved limit)
-3. Actionable suggestions to improve (e.g., improve credit score, reduce existing EMI, apply for lower amount)
+            Provide:
+            1. A polite, empathetic explanation (2-3 sentences) short and crisp
+            2. Specific reasons (e.g., low credit score, high FOIR, exceeds pre-approved limit)
+            3. Actionable suggestions to improve (e.g., improve credit score, reduce existing EMI, apply for lower amount)
 
-Keep it professional, supportive, and under 150 words.
-"""
+            Keep it professional, supportive, and under 100 words.
+            """
             
             try:
                 ai_explanation = get_llama_response(reject_prompt)
@@ -711,11 +711,11 @@ elif st.session_state.waiting_for == "document_upload":
         uploaded = st.file_uploader(
             "Upload Salary Slip / Bank Statement",
             type=["pdf", "jpg", "png", "jpeg"],
-            help="Latest salary slip or last 3 months bank statement"
+            help="Latest salary slip or last 3 months bank statement combined"
         )
         
         if uploaded:
-            st.success(f"✅ File uploaded: {uploaded.name} ({uploaded.size / 1024:.1f} KB)")
+            st.success(f"✅ File uploaded: {uploaded.name} ({uploaded.size / 5000:.1f} KB)")
             
             if st.button("Verify Document →", use_container_width=True):
                 st.session_state.uploaded_file = uploaded
@@ -787,26 +787,26 @@ elif st.session_state.waiting_for == "sanction_letter":
             add_message(
                 "agent",
                 f"""
-🎊 **Congratulations! Your loan has been sanctioned!**
+        🎊  Congratulations! Your loan has been sanctioned!
 
-Your sanction letter is ready for download. Here's what happens next:
+        Your sanction letter is ready for download. Here's what happens next:
 
-**Next Steps:**
-1. ✅ Download your sanction letter
-2. 📧 Check your email for detailed terms
-3. 🔏 Complete KYC verification (if required)
-4. 💳 Loan disbursement within 24-48 hours
+        **Next Steps:**
+        1. ✅ Download your sanction letter
+        2. 📧 Check your email for detailed terms
+        3. 🔏 Complete KYC verification (if required)
+        4. 💳 Loan disbursement within 24-48 hours
 
-**Application Summary:**
-- ⏱️ Time taken: ~{time_taken} minutes
-- 💰 Sanctioned Amount: {format_currency(st.session_state.app_data['loan_amount'])}
-- 📅 Tenure: {st.session_state.app_data['tenure']} months
-- 💳 EMI: ₹{st.session_state.app_data['emi']:,.2f}
+        **Application Summary:**
+        - ⏱️ Time taken: ~{time_taken} minutes
+        - 💰 Sanctioned Amount: {format_currency(st.session_state.app_data['loan_amount'])}
+        - 📅 Tenure: {st.session_state.app_data['tenure']} months
+        - 💳 EMI: ₹{st.session_state.app_data['emi']:,.2f}
 
-Thank you for choosing **LoanFlow AI**! 🙏
+        Thank you for choosing **LoanFlow AI**! 🙏
 
-*Need help? Contact our support team 24/7.*
-                """
+        *Need help? Contact our support team 24/7.*
+                        """
             )
             
         else:

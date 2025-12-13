@@ -9,11 +9,11 @@ def verify_pan(pan):
                 "name": f"Customer {pan[-4:]}",      # Synthetic name
                 "credit_score": 700,                 # Neutral score
                 "existing_emi": 0,
-                "preapproved_limit": 200000,
-                "monthly_income": 50000,
-                "total_accounts": 1,
+                "preapproved_limit": 800000,
+                "monthly_income": 80000,
+                "total_accounts": 2,
                 "active_accounts": 1,
-                "closed_accounts": 0,
+                "closed_accounts": 1,
                 "payment_history": "000,000,000,000,000,000",
             }
 

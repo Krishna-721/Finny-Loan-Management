@@ -198,3 +198,1042 @@ I'm here to help you secure the perfect loan for your needs. The process is simp
 • Income details
 
 Shall we get started?
+[2025-12-13 10:25:08] [INFO] SYSTEM: New session started: LF658303
+[2025-12-13 10:25:08] [INFO] AGENT: 👋 Hi, I'm **Mr. Finn**, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:25:24] [INFO] SYSTEM: New session started: LF336383
+[2025-12-13 10:25:24] [INFO] AGENT: 👋 Hi, I'm **Mr. Finn**, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:26:17] [INFO] SYSTEM: New session started: LF499324
+[2025-12-13 10:26:17] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:26:24] [INFO] USER: yes
+[2025-12-13 10:26:24] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 10:26:43] [INFO] USER: buying a mobile
+[2025-12-13 10:26:44] [INFO] AGENT: To determine the best loan type for this customer, let's break down their need. They're looking to purchase a mobile, which is a personal expense rather than a business, educational, or large-ticket item purchase like a house or a car.
+
+1. **Recommended Loan Type**: Personal Loan
+2. **Explanation**: A Personal Loan suits them because it's designed for general personal use, allowing flexibility in how the funds are used, such as buying a mobile.
+3. **Key Benefits**:
+   - **Flexibility**: Personal Loans can be used for a variety of purposes, including unexpected expenses or personal purchases like a new mobile, without the need for specifying how the money will be used.
+   - **Quick Access to Funds**: Personal Loans often have a faster approval and disbursal process compared to other loan types, which is beneficial for immediate needs or wants like purchasing a mobile.
+
+RECOMMENDED: Personal Loan
+[2025-12-13 10:26:44] [INFO] AI_RECOMMENDATION: Personal Loan
+[2025-12-13 10:26:44] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 10:27:05] [INFO] USER: I selected **Personal** and I'm **Self-Employed**
+[2025-12-13 10:27:05] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 10:27:37] [INFO] USER: I need ₹200,000 for 90 months (EMI: ₹3,220.12)
+[2025-12-13 10:27:37] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 10:27:48] [INFO] USER: PAN: ABCDE1234F
+[2025-12-13 10:27:50] [INFO] VERIFICATION_SUCCESS: Rohit Sharma
+[2025-12-13 10:27:50] [INFO] SYSTEM: ✅###Verification Successful
+
+Welcome, **Rohit Sharma**!
+
+🟢 **CIBIL Score:** 780
+
+💳 ###Pre-approved Limit: ₹400,000
+💰 **Existing EMI:** ₹5,000/month
+[2025-12-13 10:27:50] [INFO] AGENT: Hi Rohit Sharma! Great news - your credit score is 780. That's excellent! You're pre-approved for up to ₹400,000. Let me evaluate your loan now...
+[2025-12-13 10:27:52] [INFO] UNDERWRITING_DECISION: APPROVED
+[2025-12-13 10:27:52] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #22c55e; font-size: 1.2em; font-weight: 700;'>
+                    ✅ Underwriting Decision: APPROVED
+                </div>
+            </div>
+            
+[2025-12-13 10:27:52] [INFO] AGENT: 🎉 **Great news!** Your loan has been approved. Let me generate your sanction letter...
+[2025-12-13 10:27:52] [INFO] SANCTION_GENERATED: LF499324
+[2025-12-13 10:27:52] [INFO] AGENT: 
+🎊 **Congratulations! Your loan has been sanctioned!**
+
+Your sanction letter is ready for download. Here's what happens next:
+
+**Next Steps:**
+1. ✅ Download your sanction letter
+2. 📧 Check your email for detailed terms
+3. 🔏 Complete KYC verification (if required)
+4. 💳 Loan disbursement within 24-48 hours
+
+**Application Summary:**
+- ⏱️ Time taken: ~1 minutes
+- 💰 Sanctioned Amount: ₹200,000
+- 📅 Tenure: 90 months
+- 💳 EMI: ₹3,489.98
+
+Thank you for choosing **LoanFlow AI**! 🙏
+
+*Need help? Contact our support team 24/7.*
+                
+[2025-12-13 10:28:21] [INFO] SYSTEM: New session started: LF602956
+[2025-12-13 10:28:21] [INFO] AGENT: 👋 Hi, I'm **Mr. Finn**, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:28:29] [INFO] SYSTEM: New session started: LF111106
+[2025-12-13 10:28:29] [INFO] AGENT: 👋 Hi, I'm **Mr. Finn**, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:28:39] [INFO] SYSTEM: New session started: LF855031
+[2025-12-13 10:28:39] [INFO] AGENT: 👋 Hi, I'm **Mr. Finn**, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:31:24] [INFO] SYSTEM: New session started: LF242550
+[2025-12-13 10:31:24] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:31:30] [INFO] USER: yes
+[2025-12-13 10:31:30] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 10:31:41] [INFO] USER: personal loan
+[2025-12-13 10:31:42] [INFO] AGENT: To determine the best loan type for this customer, let's break down their needs and analyze the options.
+
+The customer is looking for a loan for personal use, which can encompass a wide range of purposes such as consolidating debt, covering unexpected expenses, or financing a significant purchase.
+
+Based on their requirement, I would recommend the **Personal Loan** as the most suitable option. 
+This loan type suits them because it provides the flexibility to use the funds for any personal expense without the need for collateral or a specific end-use like a home or car purchase.
+
+Two key benefits of a Personal Loan are:
+- **Flexibility**: It can be used for a variety of purposes, giving the borrower the freedom to decide how to use the funds.
+- **Quick Access to Funds**: Personal Loans often have a faster approval and disbursal process compared to other loan types, which is beneficial in urgent situations.
+
+RECOMMENDED: Personal Loan
+[2025-12-13 10:31:42] [INFO] AI_RECOMMENDATION: Personal Loan
+[2025-12-13 10:31:42] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 10:32:19] [INFO] SYSTEM: New session started: LF834012
+[2025-12-13 10:32:19] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:32:23] [INFO] USER: yes
+[2025-12-13 10:32:23] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 10:32:33] [INFO] USER: vechile
+[2025-12-13 10:32:34] [INFO] AGENT: To determine the best loan type for the customer, let's break down their need. They're looking for a loan to purchase a vehicle. 
+
+Based on this, the most suitable loan type would be an **Auto Loan**. 
+This loan type suits them because it is specifically designed for buying vehicles, offering terms and conditions tailored to the purchase of a car.
+
+Some key benefits of an Auto Loan include:
+- Lower interest rates compared to other types of loans, such as personal loans, making it more cost-effective for the borrower.
+- The loan is secured against the vehicle itself, which can make it easier to qualify for, even for those with less-than-perfect credit.
+
+RECOMMENDED: Auto Loan
+[2025-12-13 10:32:34] [INFO] AI_RECOMMENDATION: Auto Loan
+[2025-12-13 10:32:34] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 10:32:44] [INFO] USER: I selected **Personal** and I'm **Salaried**
+[2025-12-13 10:32:44] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 10:32:56] [INFO] USER: I need ₹1,000,000 for 120 months (EMI: ₹13,493.50)
+[2025-12-13 10:32:56] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 10:33:24] [INFO] USER: PAN: XYZAB1234C
+[2025-12-13 10:33:26] [INFO] VERIFICATION_SUCCESS: Anita Kapoor
+[2025-12-13 10:33:26] [INFO] SYSTEM: ✅###Verification Successful
+
+Welcome, **Anita Kapoor**!
+
+🔴 **CIBIL Score:** 640
+
+💳 ###Pre-approved Limit: ₹120,000
+💰 **Existing EMI:** ₹10,000/month
+[2025-12-13 10:33:26] [INFO] AGENT: Hi Anita Kapoor! Great news - your credit score is 640. That's good! You're pre-approved for up to ₹120,000. Let me evaluate your loan now...
+[2025-12-13 10:33:28] [INFO] UNDERWRITING_DECISION: REJECTED
+[2025-12-13 10:33:28] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #ef4444; font-size: 1.2em; font-weight: 700;'>
+                    ❌ Underwriting Decision: REJECTED
+                </div>
+            </div>
+            
+[2025-12-13 10:33:29] [INFO] AGENT: I regret to inform you that your loan application has been rejected. I understand this news may be disappointing, and I'm here to support you. 
+
+The reasons for this decision are your credit score of 640, which is lower than our preferred threshold, and the loan amount requested exceeds your pre-approved limit of ₹120,000. Additionally, your existing EMI of ₹10,000 may impact your ability to manage the new loan.
+
+To improve your chances, consider improving your credit score, reducing your existing EMI, or applying for a lower loan amount. I'm happy to guide you through the process and explore alternative options that may be more suitable for you.
+[2025-12-13 10:45:27] [INFO] SYSTEM: New session started: LF321835
+[2025-12-13 10:45:27] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:45:35] [INFO] USER: yes
+[2025-12-13 10:45:35] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 10:45:43] [INFO] USER: emergency
+[2025-12-13 10:45:44] [INFO] AGENT: For a customer seeking a loan for an emergency, I'd be happy to help them find the best option.
+
+After analyzing their need, I think the most suitable loan type would be a **Personal Loan**. 
+This loan type suits them because it provides quick access to funds, which is essential in emergency situations.
+
+The key benefits of a Personal Loan are:
+* Fast processing and disbursal of funds, allowing them to address their emergency quickly
+* Flexibility in using the loan amount for any purpose, without restrictions
+
+RECOMMENDED: Personal Loan
+[2025-12-13 10:45:44] [INFO] AI_RECOMMENDATION: Personal Loan
+[2025-12-13 10:45:44] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 10:47:10] [INFO] USER: I selected Personal and I'm Salaried
+[2025-12-13 10:47:10] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 10:47:55] [INFO] USER: I need ₹1,000,000 for 180 months (EMI: ₹11,053.99)
+[2025-12-13 10:47:55] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 10:48:04] [INFO] USER: PAN: ABCPS1234K
+[2025-12-13 10:48:06] [INFO] VERIFICATION_SUCCESS: Vamshi Krishna
+[2025-12-13 10:48:06] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Vamshi Krishna**!
+
+🟢 **CIBIL Score:** 782
+
+💳Pre-approved Limit: ₹1,000,000
+💰 *Existing EMI:** ₹8,500/month
+[2025-12-13 10:48:06] [INFO] AGENT: Hi Vamshi Krishna! Great news - your credit score is 782. That's excellent! You're pre-approved for up to ₹1,000,000. Let me evaluate your loan now...
+[2025-12-13 10:48:08] [INFO] UNDERWRITING_DECISION: APPROVED
+[2025-12-13 10:48:08] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #22c55e; font-size: 1.2em; font-weight: 700;'>
+                    ✅ Underwriting Decision: APPROVED
+                </div>
+            </div>
+            
+[2025-12-13 10:48:08] [INFO] AGENT: 🎉 **Great news!** Your loan has been approved. Let me generate your sanction letter...
+[2025-12-13 10:48:08] [INFO] SANCTION_GENERATED: LF321835
+[2025-12-13 10:48:08] [INFO] AGENT: 
+🎊 **Congratulations! Your loan has been sanctioned!**
+
+Your sanction letter is ready for download. Here's what happens next:
+
+**Next Steps:**
+1. ✅ Download your sanction letter
+2. 📧 Check your email for detailed terms
+3. 🔏 Complete KYC verification (if required)
+4. 💳 Loan disbursement within 24-48 hours
+
+**Application Summary:**
+- ⏱️ Time taken: ~2 minutes
+- 💰 Sanctioned Amount: ₹1,000,000
+- 📅 Tenure: 180 months
+- 💳 EMI: ₹11,681.90
+
+Thank you for choosing **LoanFlow AI**! 🙏
+
+*Need help? Contact our support team 24/7.*
+                
+[2025-12-13 10:51:35] [INFO] SYSTEM: New session started: LF171853
+[2025-12-13 10:51:35] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:51:40] [INFO] SYSTEM: New session started: LF519028
+[2025-12-13 10:51:41] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:53:18] [INFO] SYSTEM: New session started: LF573579
+[2025-12-13 10:53:18] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:53:25] [INFO] USER: ok
+[2025-12-13 10:53:25] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 10:53:34] [INFO] USER: home
+[2025-12-13 10:53:36] [INFO] AGENT: To determine the best loan type for your needs, let's break down the key points.
+
+**Your Requirement:** You're looking for a loan for a "home", which suggests you're either buying, building, or renovating a house.
+
+**Recommended Loan Type:** Based on your requirement, the most suitable loan type would be a **Home Loan**.
+**Why it suits you:** This loan type is specifically designed for housing needs, offering better interest rates and more flexible repayment terms compared to other loan types.
+
+**Key Benefits:**
+1. **Lower Interest Rates**: Home loans typically offer lower interest rates compared to other loan types, making your monthly payments more manageable.
+2. **Longer Repayment Tenure**: Home loans often come with longer repayment tenures, which can reduce your monthly installment amount, making it easier to budget your finances.
+
+RECOMMENDED: Home Loan
+[2025-12-13 10:53:36] [INFO] AI_RECOMMENDATION: Home Loan
+[2025-12-13 10:53:36] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 10:53:58] [INFO] SYSTEM: New session started: LF932750
+[2025-12-13 10:53:58] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 10:54:01] [INFO] USER: y
+[2025-12-13 10:54:01] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 10:54:07] [INFO] USER: home
+[2025-12-13 10:54:08] [INFO] AGENT: To determine the best loan type for your needs, let's break down your requirements. You're looking for a loan for a "home", which suggests you're either purchasing, renovating, or possibly refinancing a property.
+
+1. **Recommended Loan Type**: Based on your requirement, the best loan type for you would be a **Home Loan**.
+2. **Why it suits you**: This loan type suits you because it is specifically designed for housing needs, offering terms and conditions tailored to the purchase, construction, or renovation of a home.
+3. **Key Benefits**:
+   - **Lower Interest Rates**: Home loans typically offer lower interest rates compared to other types of loans, making your monthly payments more manageable.
+   - **Longer Repayment Period**: Home loans often come with longer repayment periods, which can help in reducing the amount you need to pay each month, making your loan more affordable.
+
+RECOMMENDED: Home Loan
+[2025-12-13 10:54:08] [INFO] AI_RECOMMENDATION: Home Loan
+[2025-12-13 10:54:08] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 10:54:36] [INFO] USER: I selected Home and I'm Salaried
+[2025-12-13 10:54:36] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 10:55:00] [INFO] USER: I need ₹500,000 for 120 months (EMI: ₹6,746.75)
+[2025-12-13 10:55:00] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 10:55:08] [INFO] USER: PAN: ABCDE1234F
+[2025-12-13 10:55:13] [INFO] VERIFICATION_SUCCESS: Rohit Sharma
+[2025-12-13 10:55:13] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Rohit Sharma**!
+
+🟢 **CIBIL Score:** 780
+
+💳Pre-approved Limit: ₹400,000
+💰 *Existing EMI:** ₹5,000/month
+[2025-12-13 10:55:13] [INFO] AGENT: Hi Rohit Sharma! Great news - your credit score is 780. That's excellent! You're pre-approved for up to ₹400,000. Let me evaluate your loan now...
+[2025-12-13 10:55:18] [INFO] UNDERWRITING_DECISION: NEED_SALARY_SLIP
+[2025-12-13 10:55:18] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #f59e0b; font-size: 1.2em; font-weight: 700;'>
+                    ⏳ Underwriting Decision: NEED_SALARY_SLIP
+                </div>
+            </div>
+            
+[2025-12-13 10:55:18] [INFO] AGENT: 📄 To proceed further, I'll need to verify your income.
+
+Please upload your latest **salary slip** or **bank statement** (last 3 months).
+[2025-12-13 10:55:44] [INFO] DOCUMENT_VERIFICATION: Verified: True
+[2025-12-13 10:55:44] [INFO] AGENT: ✅ **Document Verified Successfully!**
+
+Document verified successfully.
+[2025-12-13 10:55:44] [INFO] SYSTEM: ✅ FOIR Check Passed (14.2% < 50%)
+[2025-12-13 10:55:45] [INFO] SANCTION_GENERATED: LF932750
+[2025-12-13 10:55:45] [INFO] AGENT: 
+🎊 **Congratulations! Your loan has been sanctioned!**
+
+Your sanction letter is ready for download. Here's what happens next:
+
+**Next Steps:**
+1. ✅ Download your sanction letter
+2. 📧 Check your email for detailed terms
+3. 🔏 Complete KYC verification (if required)
+4. 💳 Loan disbursement within 24-48 hours
+
+**Application Summary:**
+- ⏱️ Time taken: ~1 minutes
+- 💰 Sanctioned Amount: ₹500,000
+- 📅 Tenure: 120 months
+- 💳 EMI: ₹7,101.47
+
+Thank you for choosing **LoanFlow AI**! 🙏
+
+*Need help? Contact our support team 24/7.*
+                
+[2025-12-13 11:25:34] [INFO] SYSTEM: New session started: LF767610
+[2025-12-13 11:25:34] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 11:25:38] [INFO] USER: ye
+[2025-12-13 11:25:38] [INFO] AGENT: No worries! When you're ready to proceed, just type **'yes'** and we'll get started. 😊
+[2025-12-13 11:25:43] [INFO] USER: yes
+[2025-12-13 11:25:43] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 11:25:48] [INFO] USER: education
+[2025-12-13 11:25:49] [INFO] AGENT: To address the customer's need for a loan for education, I've analyzed their requirement and here's my recommendation:
+
+The best loan type for this customer would be an **Education Loan**. 
+This loan type suits them because it is specifically designed to cover the costs associated with education, such as tuition fees, books, and living expenses.
+
+The key benefits of an Education Loan are:
+* It often comes with a lower interest rate compared to other loan types, making it more affordable.
+* It typically offers a longer repayment tenure, which can help reduce the monthly burden on the borrower.
+
+RECOMMENDED: Education Loan
+[2025-12-13 11:25:49] [INFO] AI_RECOMMENDATION: Education Loan
+[2025-12-13 11:25:49] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 11:26:01] [INFO] USER: I selected Education and I'm Salaried
+[2025-12-13 11:26:01] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 11:26:06] [INFO] USER: I need ₹500,000 for 150 months (EMI: ₹5,998.80)
+[2025-12-13 11:26:06] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 11:26:24] [INFO] USER: PAN: POIUY1234T
+[2025-12-13 11:26:29] [INFO] VERIFICATION_SUCCESS: Customer 234T
+[2025-12-13 11:26:29] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Customer 234T**!
+
+🟡 **CIBIL Score:** 700
+
+💳Pre-approved Limit: ₹200,000
+💰 *Existing EMI:** ₹0/month
+[2025-12-13 11:26:29] [INFO] AGENT: Hi Customer 234T! Great news - your credit score is 700. That's good! You're pre-approved for up to ₹200,000. Let me evaluate your loan now...
+[2025-12-13 11:26:34] [INFO] UNDERWRITING_DECISION: REJECTED
+[2025-12-13 11:26:34] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #ef4444; font-size: 1.2em; font-weight: 700;'>
+                    ❌ Underwriting Decision: REJECTED
+                </div>
+            </div>
+            
+[2025-12-13 11:26:35] [INFO] AGENT: I regret to inform you that your loan application was rejected. The reason is that the requested amount exceeds your pre-approved limit of ₹200,000. Consider applying for a lower amount or improving your credit profile to enhance your eligibility.
+[2025-12-13 11:27:30] [INFO] SYSTEM: New session started: LF466034
+[2025-12-13 11:27:30] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 11:27:35] [INFO] USER: yes
+[2025-12-13 11:27:35] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 11:27:41] [INFO] USER: education
+[2025-12-13 11:27:42] [INFO] AGENT: To address the customer's need for a loan for education, I've analyzed their requirement and here's my recommendation:
+
+The best loan type for this customer would be an **Education Loan**. 
+This loan type suits them because it is specifically designed to cover the costs associated with education, such as tuition fees, books, and living expenses.
+The key benefits of an Education Loan include:
+* Tax benefits on the interest paid
+* Flexible repayment options, often with a moratorium period during the course of study
+
+RECOMMENDED: Education Loan
+[2025-12-13 11:27:42] [INFO] AI_RECOMMENDATION: Education Loan
+[2025-12-13 11:27:42] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 11:27:49] [INFO] USER: I selected Education and I'm Salaried
+[2025-12-13 11:27:49] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 11:28:01] [INFO] USER: I need ₹1,200,000 for 240 months (EMI: ₹11,980.56)
+[2025-12-13 11:28:01] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 11:28:37] [INFO] USER: PAN: LKJHG9876H
+[2025-12-13 11:28:42] [INFO] VERIFICATION_SUCCESS: Customer 876H
+[2025-12-13 11:28:42] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Customer 876H**!
+
+🟡 **CIBIL Score:** 700
+
+💳Pre-approved Limit: ₹200,000
+💰 *Existing EMI:** ₹0/month
+[2025-12-13 11:28:42] [INFO] AGENT: Hi Customer 876H! Great news - your credit score is 700. That's good! You're pre-approved for up to ₹200,000. Let me evaluate your loan now...
+[2025-12-13 11:28:47] [INFO] UNDERWRITING_DECISION: REJECTED
+[2025-12-13 11:28:47] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #ef4444; font-size: 1.2em; font-weight: 700;'>
+                    ❌ Underwriting Decision: REJECTED
+                </div>
+            </div>
+            
+[2025-12-13 11:28:48] [INFO] AGENT: I regret to inform you that your loan application was rejected. The loan amount exceeds your pre-approved limit of ₹200,000. Consider applying for a lower amount or improving your credit score to enhance your eligibility.
+[2025-12-13 11:31:47] [INFO] SYSTEM: New session started: LF926522
+[2025-12-13 11:31:47] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 11:32:01] [INFO] USER: no
+[2025-12-13 11:32:01] [INFO] AGENT: No worries! When you're ready to proceed, just type **'yes'** and we'll get started. 😊
+[2025-12-13 11:32:29] [INFO] USER: no
+[2025-12-13 11:32:29] [INFO] AGENT: No worries! When you're ready to proceed, just type 'yes' and we'll get started. 😊
+[2025-12-13 11:32:31] [INFO] USER: yes
+[2025-12-13 11:32:31] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 11:32:51] [INFO] USER: to buy a house
+[2025-12-13 11:32:52] [INFO] AGENT: To buy a house, the customer is looking for a loan that can help them achieve their dream of owning a home. 
+
+After analyzing their need, I would recommend the **Home Loan** as the best option. 
+The reason is that a Home Loan is specifically designed for purchasing a house, making it the most suitable choice for this customer.
+
+The key benefits of a Home Loan are:
+* Lower interest rates compared to other loan types
+* Longer repayment tenure, making monthly installments more manageable
+
+RECOMMENDED: Home Loan
+[2025-12-13 11:32:52] [INFO] AI_RECOMMENDATION: Home Loan
+[2025-12-13 11:32:52] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 11:33:04] [INFO] USER: I selected Home and I'm Salaried
+[2025-12-13 11:33:04] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 11:33:45] [INFO] USER: I need ₹1,000,000 for 240 months (EMI: ₹9,983.80)
+[2025-12-13 11:33:45] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 11:33:52] [INFO] USER: PAN: LMNOP5678D
+[2025-12-13 11:33:57] [INFO] VERIFICATION_SUCCESS: Vikram Singh
+[2025-12-13 11:33:57] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Vikram Singh**!
+
+🟡 **CIBIL Score:** 720
+
+💳Pre-approved Limit: ₹300,000
+💰 *Existing EMI:** ₹7,000/month
+[2025-12-13 11:33:57] [INFO] AGENT: Hi Vikram Singh! Great news - your credit score is 720. That's good! You're pre-approved for up to ₹300,000. Let me evaluate your loan now...
+[2025-12-13 11:34:02] [INFO] UNDERWRITING_DECISION: REJECTED
+[2025-12-13 11:34:02] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #ef4444; font-size: 1.2em; font-weight: 700;'>
+                    ❌ Underwriting Decision: REJECTED
+                </div>
+            </div>
+            
+[2025-12-13 11:34:03] [INFO] AGENT: I regret to inform you that your loan application was rejected. The reasons include exceeding the pre-approved limit of ₹300,000 and a high FOIR. Consider reducing existing EMIs or applying for a lower amount to improve your eligibility.
+[2025-12-13 13:06:55] [INFO] SYSTEM: New session started: LF752434
+[2025-12-13 13:06:55] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 13:07:00] [INFO] USER: o
+[2025-12-13 13:07:00] [INFO] AGENT: No worries! When you're ready to proceed, just type 'yes' and we'll get started. 😊
+[2025-12-13 13:07:05] [INFO] USER: k
+[2025-12-13 13:07:05] [INFO] AGENT: No worries! When you're ready to proceed, just type 'yes' and we'll get started. 😊
+[2025-12-13 13:07:11] [INFO] USER: ok
+[2025-12-13 13:07:11] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 13:10:27] [INFO] USER: business
+[2025-12-13 13:10:28] [INFO] AGENT: To determine the best loan type for this customer, let's break down their needs. They're looking for a loan specifically for "business" purposes. 
+
+Given this, the most suitable loan type would be a **Business Loan**. 
+This loan type suits them because it is specifically designed to meet the financial needs of businesses, such as expansion, purchasing equipment, or managing cash flow.
+
+The key benefits of a Business Loan include:
+- Flexibility in repayment terms and options
+- Ability to borrow larger amounts compared to other loan types, which is often necessary for business operations or investments
+
+RECOMMENDED: Business Loan
+[2025-12-13 13:10:28] [INFO] AI_RECOMMENDATION: Business Loan
+[2025-12-13 13:10:28] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 13:10:41] [INFO] USER: I selected Business and I'm Self-Employed
+[2025-12-13 13:10:41] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 13:10:55] [INFO] USER: I need ₹1,000,000 for 158 months (EMI: ₹11,705.12)
+[2025-12-13 13:10:55] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 13:11:08] [INFO] USER: PAN: SDFGG1234J
+[2025-12-13 13:11:13] [INFO] VERIFICATION_SUCCESS: Customer 234J
+[2025-12-13 13:11:13] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Customer 234J**!
+
+🟡 **CIBIL Score:** 700
+
+💳Pre-approved Limit: ₹200,000
+💰 *Existing EMI:** ₹0/month
+[2025-12-13 13:11:13] [INFO] AGENT: Hi Customer 234J! Great news - your credit score is 700. That's good! You're pre-approved for up to ₹200,000. Let me evaluate your loan now...
+[2025-12-13 13:11:18] [INFO] UNDERWRITING_DECISION: REJECTED
+[2025-12-13 13:11:18] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #ef4444; font-size: 1.2em; font-weight: 700;'>
+                    ❌ Underwriting Decision: REJECTED
+                </div>
+            </div>
+            
+[2025-12-13 13:11:19] [INFO] AGENT: I regret to inform you that your loan application was rejected. The reason is that the requested amount exceeds your pre-approved limit of ₹200,000. Consider applying for a lower amount or improving your credit profile to enhance your eligibility.
+[2025-12-13 13:11:27] [INFO] SYSTEM: New session started: LF122160
+[2025-12-13 13:11:27] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 13:11:32] [INFO] USER: yes
+[2025-12-13 13:11:32] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 13:11:36] [INFO] USER: business
+[2025-12-13 13:11:37] [INFO] AGENT: To determine the best loan type for your business needs, let's break down the key points.
+
+**Loan Type Recommendation:**
+Based on your requirement for a loan for business purposes, I would recommend a **Business Loan**.
+
+**Why it suits you:** A Business Loan is the most suitable option for you because it is specifically designed to cater to the financial needs of businesses, offering flexible repayment terms and competitive interest rates.
+
+**Key Benefits:**
+- **Flexibility**: Business Loans often come with flexible repayment options, allowing you to manage your cash flow more effectively.
+- **Competitive Interest Rates**: These loans typically offer competitive interest rates, which can help reduce your overall cost of borrowing.
+
+RECOMMENDED: Business Loan
+[2025-12-13 13:11:37] [INFO] AI_RECOMMENDATION: Business Loan
+[2025-12-13 13:11:37] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 13:11:44] [INFO] USER: I selected Business and I'm Salaried
+[2025-12-13 13:11:44] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 13:12:57] [INFO] USER: I need ₹1,000,000 for 150 months (EMI: ₹11,997.60)
+[2025-12-13 13:12:57] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 13:13:05] [INFO] USER: PAN: QWERT4321Z
+[2025-12-13 13:13:10] [INFO] VERIFICATION_SUCCESS: Sneha Patel
+[2025-12-13 13:13:10] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Sneha Patel**!
+
+🟡 **CIBIL Score:** 680
+
+💳Pre-approved Limit: ₹800,000
+💰 *Existing EMI:** ₹8,000/month
+[2025-12-13 13:13:10] [INFO] AGENT: Hi Sneha Patel! Great news - your credit score is 680. That's good! You're pre-approved for up to ₹800,000. Let me evaluate your loan now...
+[2025-12-13 13:13:15] [INFO] UNDERWRITING_DECISION: REJECTED
+[2025-12-13 13:13:15] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #ef4444; font-size: 1.2em; font-weight: 700;'>
+                    ❌ Underwriting Decision: REJECTED
+                </div>
+            </div>
+            
+[2025-12-13 13:13:16] [INFO] AGENT: I regret to inform you that your loan application was rejected. The reasons include exceeding the pre-approved limit and a high FOIR. Consider reducing your existing EMI or applying for a lower amount to improve your eligibility.
+[2025-12-13 13:18:22] [INFO] SYSTEM: New session started: LF450330
+[2025-12-13 13:18:22] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 13:18:26] [INFO] USER: s
+[2025-12-13 13:18:26] [INFO] AGENT: No worries! When you're ready to proceed, just type 'yes' and we'll get started. 😊
+[2025-12-13 13:18:29] [INFO] USER: yes
+[2025-12-13 13:18:29] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 13:18:32] [INFO] USER: home
+[2025-12-13 13:18:33] [INFO] AGENT: To determine the best loan type for your needs, I'd like to analyze your requirement for a "home" loan. 
+
+Based on your requirement, I would recommend a **Home Loan** as it is specifically designed for purchasing or renovating a home.
+
+This loan type suits you because it offers a structured repayment plan and competitive interest rates tailored for home financing.
+
+The key benefits of a Home Loan include:
+* Lower interest rates compared to other loan types
+* Longer repayment tenure, making monthly installments more manageable
+
+RECOMMENDED: Home Loan
+[2025-12-13 13:18:33] [INFO] AI_RECOMMENDATION: Home Loan
+[2025-12-13 13:18:33] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 13:19:05] [INFO] USER: I selected Home and I'm Self-Employed
+[2025-12-13 13:19:05] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 13:19:21] [INFO] USER: I need ₹1,500,000 for 240 months (EMI: ₹14,975.70)
+[2025-12-13 13:19:21] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 13:19:56] [INFO] USER: PAN: POIUY4567T
+[2025-12-13 13:20:01] [INFO] VERIFICATION_SUCCESS: Customer 567T
+[2025-12-13 13:20:01] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Customer 567T**!
+
+🟡 **CIBIL Score:** 700
+
+💳Pre-approved Limit: ₹800,000
+💰 *Existing EMI:** ₹0/month
+[2025-12-13 13:20:01] [INFO] AGENT: Hi Customer 567T! Great news - your credit score is 700. That's good! You're pre-approved for up to ₹800,000. Let me evaluate your loan now...
+[2025-12-13 13:20:06] [INFO] UNDERWRITING_DECISION: NEED_SALARY_SLIP
+[2025-12-13 13:20:06] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #f59e0b; font-size: 1.2em; font-weight: 700;'>
+                    ⏳ Underwriting Decision: NEED_SALARY_SLIP
+                </div>
+            </div>
+            
+[2025-12-13 13:20:06] [INFO] AGENT: 📄 To proceed further, I'll need to verify your income.
+
+Please upload your latest **salary slip** or **bank statement** (last 3 months).
+[2025-12-13 13:23:53] [INFO] DOCUMENT_VERIFICATION: Verified: True
+[2025-12-13 13:23:53] [INFO] AGENT: ✅ **Document Verified Successfully!**
+
+{'employer': 'ABC Technologies Pvt. Ltd.', 'net_salary': 40000, 'pay_period': 'September 2025', 'document_type': 'Salary Slip'}
+[2025-12-13 13:23:53] [INFO] SYSTEM: ✅ FOIR Check Passed (22.3% < 50%)
+[2025-12-13 13:23:53] [INFO] SANCTION_GENERATED: LF450330
+[2025-12-13 13:23:53] [INFO] AGENT: 
+🎊 **Congratulations! Your loan has been sanctioned!**
+
+Your sanction letter is ready for download. Here's what happens next:
+
+**Next Steps:**
+1. ✅ Download your sanction letter
+2. 📧 Check your email for detailed terms
+3. 🔏 Complete KYC verification (if required)
+4. 💳 Loan disbursement within 24-48 hours
+
+**Application Summary:**
+- ⏱️ Time taken: ~5 minutes
+- 💰 Sanctioned Amount: ₹1,500,000
+- 📅 Tenure: 240 months
+- 💳 EMI: ₹17,841.46
+
+Thank you for choosing **LoanFlow AI**! 🙏
+
+*Need help? Contact our support team 24/7.*
+                
+[2025-12-13 13:25:34] [INFO] SYSTEM: New session started: LF850118
+[2025-12-13 13:25:34] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 13:25:40] [INFO] USER: yes
+[2025-12-13 13:25:40] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 13:25:42] [INFO] USER: home
+[2025-12-13 13:25:43] [INFO] AGENT: To determine the best loan type for this customer, let's break down their need. They're looking for a loan for their "home", which suggests they might be looking to purchase, renovate, or refinance a property.
+
+Based on this, I would recommend a **Home Loan**. This loan type suits them because it is specifically designed for housing-related expenses, offering terms and conditions tailored to the unique aspects of real estate transactions.
+
+The key benefits of a Home Loan include:
+- Typically lower interest rates compared to other loan types, making it more cost-effective in the long run.
+- Longer repayment periods, which can help keep monthly payments manageable.
+
+RECOMMENDED: Home Loan
+[2025-12-13 13:25:43] [INFO] AI_RECOMMENDATION: Home Loan
+[2025-12-13 13:25:43] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 13:25:52] [INFO] USER: I selected Home and I'm Self-Employed
+[2025-12-13 13:25:52] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 13:26:03] [INFO] USER: I need ₹1,000,000 for 214 months (EMI: ₹10,354.98)
+[2025-12-13 13:26:03] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 13:26:13] [INFO] USER: PAN: ABCPS1234K
+[2025-12-13 13:26:18] [INFO] VERIFICATION_SUCCESS: Vamshi Krishna
+[2025-12-13 13:26:18] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Vamshi Krishna**!
+
+🟢 **CIBIL Score:** 782
+
+💳Pre-approved Limit: ₹1,000,000
+💰 *Existing EMI:** ₹8,500/month
+[2025-12-13 13:26:18] [INFO] AGENT: Hi Vamshi Krishna! Great news - your credit score is 782. That's excellent! You're pre-approved for up to ₹1,000,000. Let me evaluate your loan now...
+[2025-12-13 13:26:24] [INFO] UNDERWRITING_DECISION: APPROVED
+[2025-12-13 13:26:24] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #22c55e; font-size: 1.2em; font-weight: 700;'>
+                    ✅ Underwriting Decision: APPROVED
+                </div>
+            </div>
+            
+[2025-12-13 13:26:24] [INFO] AGENT: 🎉 **Great news!** Your loan has been approved. Let me generate your sanction letter...
+[2025-12-13 13:26:24] [INFO] SANCTION_GENERATED: LF850118
+[2025-12-13 13:26:24] [INFO] AGENT: 
+🎊 ### Congratulations! Your loan has been sanctioned!
+
+Your sanction letter is ready for download. Here's what happens next:
+
+**Next Steps:**
+1. ✅ Download your sanction letter
+2. 📧 Check your email for detailed terms
+3. 🔏 Complete KYC verification (if required)
+4. 💳 Loan disbursement within 24-48 hours
+
+**Application Summary:**
+- ⏱️ Time taken: ~0 minutes
+- 💰 Sanctioned Amount: ₹1,000,000
+- 📅 Tenure: 214 months
+- 💳 EMI: ₹11,860.48
+
+Thank you for choosing **LoanFlow AI**! 🙏
+
+*Need help? Contact our support team 24/7.*
+                
+[2025-12-13 13:28:28] [INFO] SYSTEM: New session started: LF478139
+[2025-12-13 13:28:28] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 14:22:43] [INFO] SYSTEM: New session started: LF529131
+[2025-12-13 14:22:43] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 14:22:48] [INFO] USER: yes
+[2025-12-13 14:22:48] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 14:22:56] [INFO] USER: medical
+[2025-12-13 14:22:57] [INFO] AGENT: For a customer looking for a loan for medical purposes, I'd be happy to help them explore their options.
+
+After analyzing their need, I think the most suitable loan type would be a **Personal Loan**. 
+This loan type suits them because it provides quick access to funds, which is often crucial in medical emergencies.
+
+The key benefits of a Personal Loan for medical purposes are:
+* Fast processing and disbursal of funds, allowing them to cover urgent medical expenses
+* Flexibility in using the loan amount for various medical needs, such as hospital bills, surgeries, or medication
+
+RECOMMENDED: Personal Loan
+[2025-12-13 14:22:57] [INFO] AI_RECOMMENDATION: Personal Loan
+[2025-12-13 14:22:57] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 14:23:04] [INFO] USER: I selected Personal and I'm Salaried
+[2025-12-13 14:23:04] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 14:23:28] [INFO] USER: I need ₹90,000 for 172 months (EMI: ₹1,014.13)
+[2025-12-13 14:23:28] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 14:23:36] [INFO] USER: PAN: SDFGG1234J
+[2025-12-13 14:23:41] [INFO] VERIFICATION_SUCCESS: Customer 234J
+[2025-12-13 14:23:41] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Customer 234J**!
+
+🟡 **CIBIL Score:** 700
+
+💳Pre-approved Limit: ₹800,000
+💰 *Existing EMI:** ₹0/month
+[2025-12-13 14:23:41] [INFO] AGENT: Hi Customer 234J! Great news - your credit score is 700. That's good! You're pre-approved for up to ₹800,000. Let me evaluate your loan now...
+[2025-12-13 14:23:46] [INFO] UNDERWRITING_DECISION: APPROVED
+[2025-12-13 14:23:46] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #22c55e; font-size: 1.2em; font-weight: 700;'>
+                    ✅ Underwriting Decision: APPROVED
+                </div>
+            </div>
+            
+[2025-12-13 14:23:46] [INFO] AGENT: 🎉 **Great news!** Your loan has been approved. Let me generate your sanction letter...
+[2025-12-13 14:23:46] [INFO] SANCTION_GENERATED: LF529131
+[2025-12-13 14:23:46] [INFO] AGENT: 
+            🎊  Congratulations! Your loan has been sanctioned!
+
+            Your sanction letter is ready for download. Here's what happens next:
+
+            **Next Steps:**
+            1. ✅ Download your sanction letter
+            2. 📧 Check your email for detailed terms
+            3. 🔏 Complete KYC verification (if required)
+            4. 💳 Loan disbursement within 24-48 hours
+
+            **Application Summary:**
+            - ⏱️ Time taken: ~1 minutes
+            - 💰 Sanctioned Amount: ₹90,000
+            - 📅 Tenure: 172 months
+            - 💳 EMI: ₹1,141.62
+
+            Thank you for choosing **LoanFlow AI**! 🙏
+
+            *Need help? Contact our support team 24/7.*
+                            
+[2025-12-13 14:27:45] [INFO] SYSTEM: New session started: LF692638
+[2025-12-13 14:27:45] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-13 14:29:44] [INFO] USER: no
+[2025-12-13 14:29:44] [INFO] AGENT: No worries! When you're ready to proceed, just type 'yes' and we'll get started. 😊
+[2025-12-13 14:30:28] [INFO] USER: yes
+[2025-12-13 14:30:28] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-13 14:34:39] [INFO] USER: medical 
+[2025-12-13 14:34:40] [INFO] AGENT: To address the customer's need for a loan for medical purposes, I've analyzed their situation and here's my recommendation:
+
+The best loan type for their medical needs would be a **Personal Loan**. 
+This loan type suits them because it provides quick access to funds, which is often crucial in medical emergencies.
+
+The key benefits of a Personal Loan for medical purposes are:
+* Fast processing and disbursal of funds, allowing them to cover medical expenses promptly
+* Flexibility in using the loan amount for various medical needs, such as hospital bills, treatments, or equipment purchases
+
+RECOMMENDED: Personal Loan
+[2025-12-13 14:34:40] [INFO] AI_RECOMMENDATION: Personal Loan
+[2025-12-13 14:34:40] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-13 14:34:48] [INFO] USER: I selected Personal and I'm Salaried
+[2025-12-13 14:34:48] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-13 14:34:56] [INFO] USER: I need ₹1,000,000 for 158 months (EMI: ₹11,705.12)
+[2025-12-13 14:34:56] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-13 14:35:05] [INFO] USER: PAN: ABCPS1234K
+[2025-12-13 14:35:10] [INFO] VERIFICATION_SUCCESS: Vamshi Krishna
+[2025-12-13 14:35:10] [INFO] SYSTEM: ✅Verification Successful
+
+Welcome, **Vamshi Krishna**!
+
+🟢 **CIBIL Score:** 782
+
+💳Pre-approved Limit: ₹1,000,000
+💰 *Existing EMI:** ₹8,500/month
+[2025-12-13 14:35:10] [INFO] AGENT: Hi Vamshi Krishna! Great news - your credit score is 782. That's excellent! You're pre-approved for up to ₹1,000,000. Let me evaluate your loan now...
+[2025-12-13 14:35:15] [INFO] UNDERWRITING_DECISION: APPROVED
+[2025-12-13 14:35:15] [INFO] SYSTEM: 
+            <div style='background: rgba(139, 92, 246, 0.1); padding: 15px; border-radius: 8px;'>
+                <div style='color: #22c55e; font-size: 1.2em; font-weight: 700;'>
+                    ✅ Underwriting Decision: APPROVED
+                </div>
+            </div>
+            
+[2025-12-13 14:35:15] [INFO] AGENT: 🎉 **Great news!** Your loan has been approved. Let me generate your sanction letter...
+[2025-12-13 14:35:15] [INFO] SANCTION_GENERATED: LF692638
+[2025-12-13 14:35:15] [INFO] AGENT: 
+        🎊  Congratulations! Your loan has been sanctioned!
+
+        Your sanction letter is ready for download. Here's what happens next:
+
+        **Next Steps:**
+        1. ✅ Download your sanction letter
+        2. 📧 Check your email for detailed terms
+        3. 🔏 Complete KYC verification (if required)
+        4. 💳 Loan disbursement within 24-48 hours
+
+        **Application Summary:**
+        - ⏱️ Time taken: ~7 minutes
+        - 💰 Sanctioned Amount: ₹1,000,000
+        - 📅 Tenure: 158 months
+        - 💳 EMI: ₹12,311.31
+
+        Thank you for choosing **LoanFlow AI**! 🙏
+
+        *Need help? Contact our support team 24/7.*
+                        

@@ -3,7 +3,7 @@
 def calculate_emi(principal, rate_annual, tenure_months):
     """
     Standard EMI formula:
-    EMI = P × r × (1+r)^n / ((1+r)^n – 1)
+    -EMI = P * r * (1+r)^n / ((1+r)^n - 1)
     """
     rate = rate_annual / (12 * 100)
 

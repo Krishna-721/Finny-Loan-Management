@@ -9,7 +9,7 @@ def create_sanction_letter(data):
     
     # Prepare formatted data
     formatted_data = {
-        "Application ID": data.get("application_id", "LF00000"),
+        "Application ID": data.get("application_id", "LF{000, 999}"),
         "Date": datetime.now().strftime("%d %B %Y"),
         "Applicant Name": data.get("name", "N/A"),
         "PAN Number": data.get("pan", "N/A"),

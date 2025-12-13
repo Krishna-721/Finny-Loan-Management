@@ -40,7 +40,7 @@ MOCK_PAN_DB = {
         "name": "Sneha Patel",
         "credit_score": 680,
         "existing_emi": 8000,
-        "preapproved_limit": 250000,
+        "preapproved_limit": 800000,
         "monthly_income": 55000,
         "total_accounts": 4,
         "active_accounts": 3,
