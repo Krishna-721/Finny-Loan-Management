@@ -1,5 +1,6 @@
 from core.pdf_generator import generate_sanction_letter_pdf
 from datetime import datetime
+import random
 
 def create_sanction_letter(data):
     """
@@ -9,7 +10,7 @@ def create_sanction_letter(data):
     
     # Prepare formatted data
     formatted_data = {
-        "Application ID": data.get("application_id", "LF{000, 999}"),
+        "Application ID": data.get("application_id", f"LF{random.randint(100000, 999999)}"),
         "Date": datetime.now().strftime("%d %B %Y"),
         "Applicant Name": data.get("name", "N/A"),
         "PAN Number": data.get("pan", "N/A"),
