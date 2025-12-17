@@ -309,7 +309,7 @@ with col1:
                 animation: fadeIn 0.6s ease-out;'>
         <h1 style='color: white; margin: 0; font-size: 2.2em; font-weight: 800; 
                    text-shadow: 0 2px 10px rgba(0,0,0,0.3);'>
-            🏦 LoanFlow AI
+            🏦 LoanFlow 
         </h1>
         <p style='color: rgba(255,255,255,0.95); margin: 10px 0 0 0; font-size: 1.15em; font-weight: 500;'>
             Smart Conversational Loan Assistant
@@ -363,7 +363,6 @@ elif st.session_state.waiting_for in ["sanction_letter"]:
 
 show_progress_bar(current_step)
 
-# Enhanced quick tips
 st.markdown("""
 <div style='background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(99, 102, 241, 0.1)); 
             padding: 15px 20px; border-radius: 10px; 
