@@ -17,8 +17,6 @@ __pycache__/
 *.log
 logs/
 
-README.md
-
 output/
 
 converstaion_logs.txt

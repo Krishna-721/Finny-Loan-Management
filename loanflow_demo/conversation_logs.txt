@@ -2402,3 +2402,61 @@ Welcome, **Vikram Singh**!
 [2025-12-16 19:50:49] [INFO] AGENT: 📄 To proceed further, I'll need to verify your income.
 
 Please upload your latest **salary slip** or **bank statement** (last 3 months).
+[2025-12-17 11:23:07] [INFO] SYSTEM: New session started: LF106344
+[2025-12-17 11:23:07] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2025-12-17 11:28:53] [INFO] USER: yes
+[2025-12-17 11:28:53] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2025-12-17 11:28:58] [INFO] USER: medical
+[2025-12-17 11:28:59] [INFO] AGENT: For a medical loan, I'd be happy to help you explore your options.
+
+The best loan type for your needs would be a **Personal Loan**. 
+This loan type suits you because it provides quick access to funds for medical emergencies.
+
+Here are the key benefits of a Personal Loan:
+* Fast approval and disbursal of funds
+* Flexible repayment terms
+
+RECOMMENDED: Personal Loan
+[2025-12-17 11:28:59] [INFO] AI_RECOMMENDATION: Personal Loan
+[2025-12-17 11:28:59] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2025-12-17 11:30:42] [INFO] USER: I selected Personal and I'm Salaried
+[2025-12-17 11:30:42] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2025-12-17 11:31:29] [INFO] USER: I need ₹500,000 for 108 months (EMI: ₹7,733.78)
+[2025-12-17 11:31:29] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2025-12-17 11:35:39] [INFO] USER: PAN: XYZAB1234C
+[2025-12-17 11:35:42] [INFO] VERIFICATION_SUCCESS: Anita Kapoor
+[2025-12-17 11:35:42] [INFO] SYSTEM: ✅ Verification Successful
+
+Welcome, **Anita Kapoor**!
+
+🔴 **CIBIL Score:** 640
+
+💳 **Pre-approved Limit:** ₹120,000
+💰 **Existing EMI:** ₹10,000/month
+[2025-12-17 11:35:42] [INFO] AGENT: Hi Anita Kapoor! Great news - your credit score is 640. That's good! You're pre-approved for up to ₹120,000. Let me evaluate your loan now...
+[2025-12-17 11:35:45] [INFO] UNDERWRITING_DECISION: REJECTED
+[2025-12-17 11:35:45] [INFO] SYSTEM: 
+            <div style='background: rgba(239, 68, 68, 0.2); 
+                        padding: 20px; border-radius: 12px;
+                        border: 2px solid #ef4444;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
+                <div style='color: #ef4444; font-size: 1.3em; font-weight: 800; 
+                            display: flex; align-items: center; gap: 10px;'>
+                    ❌ Underwriting Decision: REJECTED
+                </div>
+            </div>
+            
+[2025-12-17 11:35:45] [INFO] AGENT: I regret to inform you that your loan application was rejected. The reasons include a credit score of 640 and an existing EMI of ₹10,000, which is high. Consider improving your credit score and reducing existing EMIs to reapply for a lower amount.
