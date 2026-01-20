@@ -1,44 +1,105 @@
-# Finny – Conversational Loan Management System
+# Finny — Conversational Loan Origination System (LOS)
 
-Finny is a **rule-based conversational loan origination system (LOS)** designed to simulate NBFC-style loan processing using a multi-agent architecture.
+Finny is a **deterministic, rule-based conversational Loan Origination System (LOS)** designed to closely mirror how real NBFCs and fintech lenders process retail loan applications.
 
-The system focuses on **deterministic decision-making** using underwriting rules, while AI is used **only for explanations and user guidance**.
+The system intentionally separates **decision-making** from **explanation**:
 
----
+* Loan approvals and rejections are made **only through predefined underwriting rules**
+* AI is used **strictly for explainability, guidance, and user communication** — never for credit decisions
 
-## 🧩 Architecture
-
-Finny follows a **5 Agent + 1 Master Agent** model:
-
-* **Master Agent (FINNY)** – Manages/Orchestrates the entire loan flow
-* **Sales Agent** – Captures loan intent, type, amount, and tenure
-* **Verification Agent** – PAN validation and credit bureau fetch (mocked)
-* **Underwriting Agent** – Rule-based eligibility checks (FOIR, limits, credit rules)
-* **Document Agent** – Handles salary slip / document uploads (OCR-ready)
-* **Sanction Agent** – Generates sanction letter for approved loans
+This design reflects real-world financial systems where **auditability, predictability, and regulatory trust** are non-negotiable.
 
 ---
 
-## 🔄 Loan Flow (High Level)
+## Why Finny
 
-1. User starts loan application via chat
-2. Sales Agent collects loan details
-3. PAN is verified and bureau data is fetched
-4. Underwriting rules are applied
-5. Outcome:
+Most loan demos and student projects rely heavily on black-box AI models to make credit decisions. While impressive on the surface, such systems are:
 
-   * Approved
-   * Conditionally Approved (documents required)
-   * Rejected (with explanation)
+* Hard to audit
+* Difficult to explain to users
+* Unrealistic for regulated environments
+
+**Finny takes a different approach.**
+
+It models how actual lenders work internally:
+
+* Structured intake of loan intent
+* Deterministic underwriting rules (FOIR, income, credit score)
+* Clear approval, conditional approval, or rejection outcomes
+* Human-readable explanations at every step
+
+The result is a system that feels conversational to the user, while remaining **fully controllable and transparent** for the lender.
 
 ---
 
-## 📊 Core Logic
+## Product Capabilities
+
+### Conversational Loan Application
+
+Users apply for loans through a guided, chat-based flow that captures:
+
+* Loan type
+* Requested amount
+* Tenure
+* Basic applicant details
+
+The interaction is designed to resemble modern fintech onboarding journeys.
+
+### Rule-Based Underwriting Engine
+
+Loan eligibility is evaluated using deterministic rules, including:
 
 * EMI calculation
-* FOIR calculation
-* Interest rate logic
-* Credit score–based rules
+* Fixed Obligation to Income Ratio (FOIR)
+* Credit score thresholds
+* Income-based eligibility limits
+
+All decisions are reproducible and traceable.
+
+### Explainable Outcomes
+
+Every loan application results in one of three outcomes:
+
+* **Approved**
+* **Conditionally Approved** (additional documents required)
+* **Rejected**
+
+For each outcome, Finny provides a clear explanation and, where applicable, suggests corrective actions — without allowing AI to influence the actual decision.
+
+---
+
+## System Architecture
+
+Finny is built using a **multi-agent architecture** inspired by internal NBFC workflows.
+
+### Agents
+
+* **Master Agent (FINNY)**
+  Orchestrates the entire loan lifecycle and manages state across agents.
+
+* **Sales Agent**
+  Captures loan intent, amount, tenure, and product selection.
+
+* **Verification Agent**
+  Performs PAN validation and fetches credit bureau data (mocked for simulation).
+
+* **Underwriting Agent**
+  Applies deterministic eligibility and risk rules.
+
+* **Document Agent**
+  Handles document collection and validation (OCR-ready).
+
+* **Sanction Agent**
+  Generates sanction letters for approved loans.
+
+---
+
+## Core Logic
+
+* EMI calculation
+* FOIR computation
+* Interest rate determination
+* Credit score–based eligibility rules
 
 Mock credit bureau data is defined in:
 
@@ -46,31 +107,37 @@ Mock credit bureau data is defined in:
 core/mock_bureau.py
 ```
 
-If a PAN is not found, realistic default values are generated.
+If a PAN is not found, realistic default bureau values are generated to simulate real-world edge cases.
 
 ---
 
-## 🤖 AI Usage
+## AI Usage Policy
 
-AI is **restricted** to:
+AI in Finny is **explicitly restricted** to:
 
-* Explaining approval or rejection
-* Suggesting corrective steps after rejection
+* Explaining approval or rejection decisions
+* Guiding users after a rejection
 
-AI **does not** approve or reject loans.
+AI **never**:
+
+* Approves loans
+* Rejects loans
+* Alters underwriting logic
+
+This mirrors compliance-friendly AI usage in real financial institutions.
 
 ---
 
-## 🛠 Tech Stack
+## Technology Stack
 
 * Python
 * Streamlit (conversational UI)
 * Rule-based underwriting engine
-* Mock credit bureau
+* Mock credit bureau integration
 
 ---
 
-## ▶️ Run Locally
+## Running the Project Locally
 
 ```bash
 git clone https://github.com/Krishna-721/Finny-Loan-Management.git
@@ -81,16 +148,22 @@ streamlit run app.py
 
 ---
 
-## 🚀 Future Scope
+## Future Roadmap
 
 * OCR-based salary slip extraction
-* Secure PAN & document encryption
-* Database integration
+* Secure PAN and document encryption
+* Persistent database integration
 * Java Spring Boot backend
 * Next.js frontend
 
 ---
 
-## 🔗 Links
+## Live Demo
 
-* Live Demo: [https://finny-loan-management.streamlit.app](https://finny-loan-management.streamlit.app)
+[https://finny-loan-management.streamlit.app](https://finny-loan-management.streamlit.app)
+
+---
+
+## Disclaimer
+
+Finny is a **simulation and learning project** designed to demonstrate system design, underwriting logic, and explainable AI patterns. It does not process real financial data or issue actual loans.
