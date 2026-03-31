@@ -17,5 +17,5 @@ def verify_pan(pan):
                 "payment_history": "000,000,000,000,000,000",
             }
 
-    cibil_report = generate_cibil_report(result)
+    cibil_report = generate_cibil_report(result, pan=pan)
     return result, cibil_report

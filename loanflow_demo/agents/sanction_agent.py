@@ -27,6 +27,6 @@ def create_sanction_letter(data):
     }
     
     # Generate PDF
-    filename = generate_sanction_letter_pdf(formatted_data)
-    
-    return filename
+    filepath = generate_sanction_letter_pdf(formatted_data)
+    with open(filepath, "rb") as f:
+        return f.read()

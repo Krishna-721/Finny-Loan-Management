@@ -2460,3 +2460,90 @@ Welcome, **Anita Kapoor**!
             </div>
             
 [2025-12-17 11:35:45] [INFO] AGENT: I regret to inform you that your loan application was rejected. The reasons include a credit score of 640 and an existing EMI of ₹10,000, which is high. Consider improving your credit score and reducing existing EMIs to reapply for a lower amount.
+[2026-03-31 20:05:21] [INFO] SYSTEM: New session started: LF148838
+[2026-03-31 20:05:21] [INFO] AGENT: 👋 Hi, I'm Mr. Finn, your personal loan assistant!
+
+I'm here to help you secure the perfect loan for your needs. The process is simple, secure, and typically takes just a few minutes.
+
+**What I'll need from you:**
+• Basic loan requirements
+• PAN verification
+• Income details
+
+Shall we get started?
+[2026-03-31 20:06:21] [INFO] USER: yes
+[2026-03-31 20:06:21] [INFO] AGENT: Excellent! Let's begin. 🚀
+
+First, I'd like to understand your financial needs better. **What's the primary purpose of your loan?**
+
+*For example: buying a home, vehicle, education, business expansion, medical emergency, etc.*
+[2026-03-31 20:06:44] [INFO] USER: i want to buy a mobile for my parents
+[2026-03-31 20:06:45] [INFO] AGENT: To help you buy a mobile for your parents, I've analyzed your need and here's my recommendation:
+
+**Recommended Loan Type:** Personal Loan
+**Why it suits you:** It's a flexible and quick way to get funds for a small purchase like a mobile phone.
+
+**Key Benefits:**
+* Easy and fast application process
+* No collateral required, so you can get the loan quickly
+
+RECOMMENDED: Personal Loan
+[2026-03-31 20:06:45] [INFO] AI_RECOMMENDATION: Personal Loan
+[2026-03-31 20:06:45] [INFO] AGENT: Great! Let me help you find the perfect loan. Please select your loan type and employment status below:
+[2026-03-31 20:07:00] [INFO] USER: I selected Personal and I'm Salaried
+[2026-03-31 20:07:00] [INFO] AGENT: Perfect! Now, how much would you like to borrow? Please enter the amount and select your preferred tenure:
+[2026-03-31 20:07:21] [INFO] USER: I need ₹500,000 for 102 months (EMI: ₹7,982.06)
+[2026-03-31 20:07:21] [INFO] AGENT: Excellent! To check your eligibility and credit profile, I'll need your PAN number:
+[2026-03-31 20:07:35] [INFO] USER: PAN: ABCDE1234F
+[2026-03-31 20:07:39] [INFO] VERIFICATION_SUCCESS: Rohit Sharma
+[2026-03-31 20:07:39] [INFO] SYSTEM: ✅ Verification Successful
+
+Welcome, **Rohit Sharma**!
+
+🟢 **CIBIL Score:** 780
+
+💳 **Pre-approved Limit:** ₹400,000
+💰 **Existing EMI:** ₹5,000/month
+[2026-03-31 20:07:39] [INFO] AGENT: Hi Rohit Sharma! Great news - your credit score is 780. That's excellent! You're pre-approved for up to ₹400,000. Let me evaluate your loan now...
+[2026-03-31 20:07:42] [INFO] UNDERWRITING_DECISION: NEED_SALARY_SLIP
+[2026-03-31 20:07:42] [INFO] SYSTEM: 
+            <div style='background: rgba(245, 158, 11, 0.2); 
+                        padding: 20px; border-radius: 12px;
+                        border: 2px solid #f59e0b;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.2);'>
+                <div style='color: #f59e0b; font-size: 1.3em; font-weight: 800; 
+                            display: flex; align-items: center; gap: 10px;'>
+                    ⏳ Underwriting Decision: NEED_SALARY_SLIP
+                </div>
+            </div>
+            
+[2026-03-31 20:07:42] [INFO] AGENT: 📄 To proceed further, I'll need to verify your income.
+
+Please upload your latest **salary slip** or **bank statement** (last 3 months).
+[2026-03-31 20:08:08] [INFO] DOCUMENT_VERIFICATION: Verified: True
+[2026-03-31 20:08:08] [INFO] AGENT: ✅ **Document Verified Successfully!**
+
+Document verified successfully.
+[2026-03-31 20:08:08] [INFO] SYSTEM: ✅ FOIR Check Passed (15.0% ≤ 50%)
+[2026-03-31 20:08:08] [INFO] SANCTION_GENERATED: LF148838
+[2026-03-31 20:08:08] [INFO] AGENT: 
+🎊 Congratulations! Your loan has been sanctioned!
+
+Your sanction letter is ready for download. Here's what happens next:
+
+**Next Steps:**
+1. ✅ Download your sanction letter
+2. 📧 Check your email for detailed terms
+3. 🔏 Complete KYC verification (if required)
+4. 💳 Loan disbursement within 24-48 hours
+
+**Application Summary:**
+- ⏱️ Time taken: ~2 minutes
+- 💰 Sanctioned Amount: ₹500,000
+- 📅 Tenure: 102 months
+- 💳 EMI: ₹7,772.81
+
+Thank you for choosing LoanFlow AI! 🙏
+
+*Need help? Contact our support team 24/7.*
+                

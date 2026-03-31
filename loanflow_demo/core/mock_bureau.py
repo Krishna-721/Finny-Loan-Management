@@ -76,7 +76,7 @@ def fetch_pan_details(pan):
     pan = pan.upper().strip()
     return MOCK_PAN_DB.get(pan)
 
-def generate_cibil_report(bureau_data):
+def generate_cibil_report(bureau_data, pan="XXXXXXXXXX"):
     """
     Generates a detailed CIBIL-style credit report based on bureau data
     """
@@ -188,7 +188,7 @@ Score Date           : {datetime.now().strftime("%d-%b-%Y")}
 Name                 : {name}
 Gender               : Male
 Date of Birth        : 15-Aug-1992
-PAN                  : ABCPS1234K
+PAN                  : {pan}
 ID Type              : PAN Card
 
 3. CONTACT INFORMATION

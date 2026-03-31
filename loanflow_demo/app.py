@@ -405,27 +405,20 @@ with st.container():
             st.markdown("""
             <div style='background: linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(16, 185, 129, 0.15)); 
                         padding: 25px; border-radius: 15px; 
-                        border: 2px solid rgba(34, 197, 94, 0.4); margin: 25px 0;
-                        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.2);
-                        animation: fadeIn 0.5s ease-out;'>
-                <h3 style='color: #22c55e; margin-top: 0; display: flex; align-items: center; gap: 10px;'>
-                    🎉 Sanction Letter Generated Successfully!
+                        border: 2px solid rgba(34, 197, 94, 0.4); margin: 25px 0;'>
+                <h3 style='color: #22c55e; margin-top: 0;'>
+                    🎉 Sanction Letter Ready!
                 </h3>
             </div>
             """, unsafe_allow_html=True)
-            
-            with st.expander("📄 View Sanction Letter", expanded=True):
-                st.code(msg["content"], language="text")
-            
-            col1, col2 = st.columns(2)
-            with col1:
-                st.download_button(
-                    label="📥 Download as TXT",
-                    data=msg["content"],
-                    file_name=f"Sanction_Letter_{st.session_state.application_id}.txt",
-                    mime="text/plain",
-                    use_container_width=True
-                )
+
+            st.download_button(
+                label="📥 Download Sanction Letter (PDF)",
+                data=msg["pdf_bytes"],
+                file_name=f"Sanction_{st.session_state.application_id}.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )   
             with col2:
                 st.download_button(
                     label="📧 Email Copy",
@@ -643,6 +636,10 @@ elif st.session_state.waiting_for == "amount":
                         border-top: 1px solid rgba(139, 92, 246, 0.4);'>
                 <span style='color: rgba(255,255,255,0.7); font-size: 0.9em;'>
                     💰 Total Amount Payable: <strong style='color: #c4b5fd;'>₹{(estimated_emi * tenure):,.2f}</strong>
+                </span>
+                <div style='margin-top: 10px;'>
+                <span style='color: rgba(255,255,255,0.5); font-size: 0.8em; font-style: italic;'>
+                    ⚠️ Estimate based on base rate. Final EMI confirmed after credit assessment.
                 </span>
             </div>
         </div>
@@ -956,11 +953,12 @@ elif st.session_state.waiting_for == "sanction_letter":
             
             log_event("SANCTION_GENERATED", st.session_state.application_id, "INFO")
             
+            pdf_bytes = create_sanction_letter(st.session_state.app_data)
             st.session_state.chat_history.append({
                 "type": "sanction",
-                "content": sanction_text
+                "pdf_bytes": pdf_bytes
             })
-            
+                        
             # Calculate total time taken
             time_taken = (datetime.now() - st.session_state.start_time).seconds // 60
             
